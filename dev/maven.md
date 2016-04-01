@@ -1,0 +1,180 @@
+## Maven
+
+### Maven安装配置
+- 从官网下载maven解压到`/usr/local`目录
+
+	`tar -xvf maven.tar.gz -C /usr/local`
+
+- Maven安装配置
+
+	`vim /etc/profile`在最下面输入
+```shell
+export M2_HOME=/usr/local/apache-maven
+export PATH=$M2_HOME/bin:$PATH
+```
+最后执行命令 `source /etc/profile` 使环境变量生效
+测试是否安装成功`mvn -version`
+
+### Maven常用命令
+
+- `mvn clean compile package -Dmaven.test.skip=true -Ptest -f /root/test/pom.xml` 编译打包，跳过单元测试，使用test环境
+- `mvn install` 安装到本地仓库
+- `mvn install:install-file -DgroupId=com.sun.jdmk -DartifactId=jmxtools -Dversion=1.2.1 -Dpackaging=jar -Dfile=/path/to/file` 安装jar包本地仓库
+- `mvn deploy` 部署至私服
+- `mvn deploy:deploy-file -DgroupId=com.sun.jdmk -DartifactId=jmxtools -Dversion=1.2.1 -Dpackaging=jar -Dfile=/path/to/file` 部署jar到私服
+
+### Maven插件
+- compile
+```xml
+<plugin>
+           <groupId>org.apache.maven.plugins</groupId>
+           <artifactId>maven-compiler-plugin</artifactId>
+           <version>3.0</version>
+           <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <showWarnings>true</showWarnings>
+            </configuration>
+</plugin>
+```
+
+- resources
+```xml
+<resources>
+            <resource>
+                <directory>src/main/resources</directory>
+				<!-- 使用resources替换功能-->
+                <filtering>true</filtering>
+                <includes>
+                    <include>${profile.active}/application.properties</include>
+                    <include>${profile.active}/logback.xml</include>
+                    <include>*.xml</include>
+                    <include>*.properties</include>
+                </includes>
+            </resource>
+</resources>
+```
+
+- war
+```xml
+<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <warName>ROOT</warName>
+                    <webResources>
+                        <resource>
+                            <filtering>true</filtering>
+                            <directory>src/main/webapp</directory>
+                            <includes>
+                                <include>**/*.xml</include>
+                            </includes>
+                        </resource>
+                    </webResources>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                    </archive>
+                </configuration>
+</plugin>
+```
+
+- jar
+```xml
+<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <classesDirectory>target/classes/</classesDirectory>
+                    <archive>
+                        <manifest>
+                            <mainClass>com.alibaba.dubbo.container.Main</mainClass>
+                            <!-- 主方法，dubbo官方提供的 -->
+                            <!-- 打包时 MANIFEST.MF文件不记录的时间戳版本 -->
+                            <useUniqueVersions>false</useUniqueVersions>
+                            <addClasspath>true</addClasspath>
+                            <classpathPrefix>lib/</classpathPrefix>
+                        </manifest>
+                        <manifestEntries>
+                            <Class-Path>.</Class-Path>
+                        </manifestEntries>
+                    </archive>
+                </configuration>
+</plugin>
+```
+
+- dependency
+```xml
+<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-dependencies</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <type>jar</type>
+                            <includeTypes>jar</includeTypes>
+                            <excludeScope>system</excludeScope>
+                            <outputDirectory>
+                                ${project.build.directory}/lib
+                            </outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+</plugin>
+```
+
+- scm
+```xml
+<scm>
+        <url>http://svnIp/repo/trunk/project/subproject</url>
+        <connection>scm:svn:http://svnIp/repo/trunk/project/subproject</connection>
+        <developerConnection>scm:svn:http://svnIp/repo/trunk/project/subproject</developerConnection>
+</scm>
+```
+
+- release
+```xml
+<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <!-- 设置分支跟tag的url -->
+                    <branchBase>http://svnIp/repo/branches</branchBase>
+                    <tagBase>http://svnIp/repo/tags</tagBase>
+                </configuration>
+</plugin>
+```
+
+### Maven实战
+- 可执行jar包
+	- 将项目及所依赖的所有jar包打包成一个jar
+	添加assembly插件
+	```xml
+<plugin>  
+            <groupId>org.apache.maven.plugins</groupId>  
+            <artifactId>maven-assembly-plugin</artifactId>  
+            <version>2.6</version>  
+            <configuration>  
+                <archive>  
+                    <manifest>  
+                        <mainClass>com.alibaba.dubbo.container.Main</mainClass>  
+                    </manifest>  
+                </archive>  
+                <descriptorRefs>  
+                    <descriptorRef>jar-with-dependencies</descriptorRef>  
+                </descriptorRefs>  
+            </configuration>  
+</plugin>
+```
+执行`mvn assembly:assembly`命令即可。
+	- 将项目依赖的jar复制到一个目录中并在MANIFEST文件中添加Class-Path和Main-Class
+	参见上文中的jar插件及dependency插件
+
+### Maven其他
+[mirror和repository 区别](http://m.oschina.net/blog/100634)
+[pom.xml配置说明](http://siye1982.iteye.com/blog/321557)
