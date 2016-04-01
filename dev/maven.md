@@ -1,29 +1,29 @@
 ## Maven
 
-### Maven°²×°ÅäÖÃ
-- ´Ó¹ÙÍøÏÂÔØmaven½âÑ¹µ½`/usr/local`Ä¿Â¼
+### Mavenå®‰è£…é…ç½®
+- ä»å®˜ç½‘ä¸‹è½½mavenè§£å‹åˆ°`/usr/local`ç›®å½•
 
 	`tar -xvf maven.tar.gz -C /usr/local`
 
-- Maven°²×°ÅäÖÃ
+- Mavenå®‰è£…é…ç½®
 
-	`vim /etc/profile`ÔÚ×îÏÂÃæÊäÈë
+	`vim /etc/profile`åœ¨æœ€ä¸‹é¢è¾“å…¥
 ```shell
 export M2_HOME=/usr/local/apache-maven
 export PATH=$M2_HOME/bin:$PATH
 ```
-×îºóÖ´ĞĞÃüÁî `source /etc/profile` Ê¹»·¾³±äÁ¿ÉúĞ§
-²âÊÔÊÇ·ñ°²×°³É¹¦`mvn -version`
+æœ€åæ‰§è¡Œå‘½ä»¤ `source /etc/profile` ä½¿ç¯å¢ƒå˜é‡ç”Ÿæ•ˆ
+æµ‹è¯•æ˜¯å¦å®‰è£…æˆåŠŸ`mvn -version`
 
-### Maven³£ÓÃÃüÁî
+### Mavenå¸¸ç”¨å‘½ä»¤
 
-- `mvn clean compile package -Dmaven.test.skip=true -Ptest -f /root/test/pom.xml` ±àÒë´ò°ü£¬Ìø¹ıµ¥Ôª²âÊÔ£¬Ê¹ÓÃtest»·¾³
-- `mvn install` °²×°µ½±¾µØ²Ö¿â
-- `mvn install:install-file -DgroupId=com.sun.jdmk -DartifactId=jmxtools -Dversion=1.2.1 -Dpackaging=jar -Dfile=/path/to/file` °²×°jar°ü±¾µØ²Ö¿â
-- `mvn deploy` ²¿ÊğÖÁË½·ş
-- `mvn deploy:deploy-file -DgroupId=com.sun.jdmk -DartifactId=jmxtools -Dversion=1.2.1 -Dpackaging=jar -Dfile=/path/to/file` ²¿Êğjarµ½Ë½·ş
+- `mvn clean compile package -Dmaven.test.skip=true -Ptest -f /root/test/pom.xml` ç¼–è¯‘æ‰“åŒ…ï¼Œè·³è¿‡å•å…ƒæµ‹è¯•ï¼Œä½¿ç”¨testç¯å¢ƒ
+- `mvn install` å®‰è£…åˆ°æœ¬åœ°ä»“åº“
+- `mvn install:install-file -DgroupId=com.sun.jdmk -DartifactId=jmxtools -Dversion=1.2.1 -Dpackaging=jar -Dfile=/path/to/file` å®‰è£…jaråŒ…æœ¬åœ°ä»“åº“
+- `mvn deploy` éƒ¨ç½²è‡³ç§æœ
+- `mvn deploy:deploy-file -DgroupId=com.sun.jdmk -DartifactId=jmxtools -Dversion=1.2.1 -Dpackaging=jar -Dfile=/path/to/file` éƒ¨ç½²jaråˆ°ç§æœ
 
-### Maven²å¼ş
+### Mavenæ’ä»¶
 - compile
 ```xml
 <plugin>
@@ -43,7 +43,7 @@ export PATH=$M2_HOME/bin:$PATH
 <resources>
             <resource>
                 <directory>src/main/resources</directory>
-				<!-- Ê¹ÓÃresourcesÌæ»»¹¦ÄÜ-->
+				<!-- ä½¿ç”¨resourcesæ›¿æ¢åŠŸèƒ½-->
                 <filtering>true</filtering>
                 <includes>
                     <include>${profile.active}/application.properties</include>
@@ -89,8 +89,8 @@ export PATH=$M2_HOME/bin:$PATH
                     <archive>
                         <manifest>
                             <mainClass>com.alibaba.dubbo.container.Main</mainClass>
-                            <!-- Ö÷·½·¨£¬dubbo¹Ù·½Ìá¹©µÄ -->
-                            <!-- ´ò°üÊ± MANIFEST.MFÎÄ¼ş²»¼ÇÂ¼µÄÊ±¼ä´Á°æ±¾ -->
+                            <!-- ä¸»æ–¹æ³•ï¼Œdubboå®˜æ–¹æä¾›çš„ -->
+                            <!-- æ‰“åŒ…æ—¶ MANIFEST.MFæ–‡ä»¶ä¸è®°å½•çš„æ—¶é—´æˆ³ç‰ˆæœ¬ -->
                             <useUniqueVersions>false</useUniqueVersions>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
@@ -143,17 +143,18 @@ export PATH=$M2_HOME/bin:$PATH
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-release-plugin</artifactId>
                 <configuration>
-                    <!-- ÉèÖÃ·ÖÖ§¸útagµÄurl -->
+                    <!-- è®¾ç½®åˆ†æ”¯è·Ÿtagçš„url -->
                     <branchBase>http://svnIp/repo/branches</branchBase>
                     <tagBase>http://svnIp/repo/tags</tagBase>
                 </configuration>
 </plugin>
 ```
 
-### MavenÊµÕ½
-- ¿ÉÖ´ĞĞjar°ü
-	- ½«ÏîÄ¿¼°ËùÒÀÀµµÄËùÓĞjar°ü´ò°ü³ÉÒ»¸öjar
-	Ìí¼Óassembly²å¼ş
+### Mavenå®æˆ˜
+- å¯æ‰§è¡ŒjaråŒ…
+	- å°†é¡¹ç›®åŠæ‰€ä¾èµ–çš„æ‰€æœ‰jaråŒ…æ‰“åŒ…æˆä¸€ä¸ªjar
+	æ·»åŠ assemblyæ’ä»¶
+
 	```xml
 <plugin>  
             <groupId>org.apache.maven.plugins</groupId>  
@@ -171,10 +172,11 @@ export PATH=$M2_HOME/bin:$PATH
             </configuration>  
 </plugin>
 ```
-Ö´ĞĞ`mvn assembly:assembly`ÃüÁî¼´¿É¡£
-	- ½«ÏîÄ¿ÒÀÀµµÄjar¸´ÖÆµ½Ò»¸öÄ¿Â¼ÖĞ²¢ÔÚMANIFESTÎÄ¼şÖĞÌí¼ÓClass-PathºÍMain-Class
-	²Î¼ûÉÏÎÄÖĞµÄjar²å¼ş¼°dependency²å¼ş
+æ‰§è¡Œ`mvn assembly:assembly`å‘½ä»¤å³å¯ã€‚
+	- å°†é¡¹ç›®ä¾èµ–çš„jarå¤åˆ¶åˆ°ä¸€ä¸ªç›®å½•ä¸­å¹¶åœ¨MANIFESTæ–‡ä»¶ä¸­æ·»åŠ Class-Pathå’ŒMain-Class
+	å‚è§ä¸Šæ–‡ä¸­çš„jaræ’ä»¶åŠdependencyæ’ä»¶
 
-### MavenÆäËû
-[mirrorºÍrepository Çø±ğ](http://m.oschina.net/blog/100634)
-[pom.xmlÅäÖÃËµÃ÷](http://siye1982.iteye.com/blog/321557)
+### Mavenå…¶ä»–
+[mirrorå’Œrepository åŒºåˆ«](http://m.oschina.net/blog/100634)
+
+[pom.xmlé…ç½®è¯´æ˜](http://siye1982.iteye.com/blog/321557)
