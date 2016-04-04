@@ -12,8 +12,8 @@
 		- CentOS 6 `chkconfig nginx on`
 		- CentOS 7 `systemctl enable nginx`
 	- nginx命令
-		- CentOS 6 `service nginx start|stop|restart`
-		- CentOS 7 `systemctl start|stop|restart nginx`
+		- CentOS 6 `service nginx start|stop|restart|status`
+		- CentOS 7 `systemctl start|stop|restart|status nginx`
 
 - 源码安装
 
