@@ -4,6 +4,9 @@
 
 - yum 方式安装
 	- 安装 EPEL 仓库 `yum install epel-release`
+
+        如果系统不能安装epel-release，从`http://dl.fedoraproject.org/pub/epel/`下载系统对应的epel-release.rpm, 安装之, `rpm -Uvh epel-release.rpm`
+
 	- 安装nginx `yum install nginx`
 	- 开机启动
 		- CentOS 6 `chkconfig nginx on`
