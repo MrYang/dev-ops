@@ -12,7 +12,12 @@
 [maven](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/maven.md)
 
 [nginx](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/nginx.md)
+
+[tomcat](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/tomcat.md)
+
+[redis](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/redis.md)
     
+[zookeeper](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/zookeeper.md)
 
 - ci
 
