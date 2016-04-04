@@ -2,7 +2,7 @@
 
 记录工作中各种开发软件，环境配置，持续集成，运维方面的实践。包括：
 
-1. dev
+- dev
 
 
 记录各种软件安装，配置，及常用命令，包括:
@@ -14,12 +14,12 @@
 [nginx](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/nginx.md)
     
 
-2. ci
+- ci
 
 
-    持续集成，包括docker,sonar,jenkins及maven私服。
+持续集成，包括docker,sonar,jenkins及maven私服。
 	
-3. ops
+- ops
 
 
-    一些运维软件的安装配置操作。
+一些运维软件的安装配置操作。
