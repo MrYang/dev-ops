@@ -19,9 +19,9 @@
 	- 解压`tar -zxvf redis-2.8.13.tar.gz -C /usr/local/`
 	- 编译安装`make && make install`
 	- 修改redis.conf配置文件 `daemonize yes`
-	- 启动 `/usr/local/bin/redis-server /usr/local/conf/redis.conf`
+	- 启动 `/usr/local/redis/bin/redis-server /usr/local/redis/conf/redis.conf`
 	- 关闭 `pkill redis-server`
-	- 设置开机启动`echo "/usr/local/bin/redis-server /usr/local/conf/redis.conf &" >> /etc/rc.local`
+	- 设置开机启动`echo "/usr/local/redis/bin/redis-server /usr/local/redis/conf/redis.conf &" >> /etc/rc.local`
 
 ### 配置
 
