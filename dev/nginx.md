@@ -21,23 +21,35 @@ make
 make install
 ```
 configure命令是用来检测你的安装平台的目标特征的。它定义了系统的各个方面，包括nginx的被允许使用的连接处理的方法，比如它会检测你是不是有CC或GCC，并不是需要CC或GCC，它是个shell脚本，执行结束时，它会创建一个Makefile文件。
+
 make是用来编译的，它从Makefile中读取指令，然后编译。
+
 make install是用来安装的，它也从Makefile中读取指令，安装到指定的位置。
 
 安装编译过程中如果出现错误，可以从错误信息中安装gcc,open-ssl等依赖库。
 
 安装时的配置参数主要有：
+
 –prefix=path 安装位置， 默认为 `/usr/local/nginx`
+
 –sbin-path=path 设置可执行文件路径， 默认为`prefix/sbin/nginx`
+
 –conf-path=path 设置配置文件路径，默认为`prefix/conf/nginx.conf`
+
 –pid-path=path 设置pid路径，默认为`prefix/logs/nginx.pid`
 
 一些可选模块：
+
 –without-http_gzip_module
+
 –without-http_rewrite_module
+
 –without-http_proxy_module
+
 –with-http_ssl_module
+
 –with-pcre=path
+
 -with-zlib=path
 
 示例：
@@ -56,6 +68,7 @@ make install是用来安装的，它也从Makefile中读取指令，安装到指
 nginx 命令, `nginx -s start|stop|restart`
 
 为什么要使用源码安装？
+
 可以添加自定义参数，自定义安装模块，方便添加第三方模块
 
 ### 配置
@@ -227,7 +240,9 @@ sleep 1
 ### Nginx安装第三方模块
 
 下载第三方模块并解压，重新编译Nginx，执行命令 `./configure --prefix=/usr/local/nginx ... --add-module=../ngx_module_upload`, 并执行`make`, 不要使用`make install`
+
 查看是否编译成功，是否添加了模块，`nginx -V`
+
 备份nginx, `cp /usr/local/nginx/sbin/nginx{,.bak}`，停止并替换编译好的nginx。
 
 ### Nginx官方wiki
