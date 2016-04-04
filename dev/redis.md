@@ -16,7 +16,7 @@
 	
 - 源码安装
 	- 下载tar安装包`wget http://download.redis.io/releases/redis-2.8.13.tar.gz`
-	- 解压`tar -zxvf -C /usr/local/reids redis-2.8.13.tar.gz`
+	- 解压`tar -zxvf redis-2.8.13.tar.gz -C /usr/local/`
 	- 编译安装`make && make install`
 	- 修改redis.conf配置文件 `daemonize yes`
 	- 启动 `/usr/local/bin/redis-server /usr/local/conf/redis.conf`
