@@ -3,7 +3,7 @@
 ### Maven安装配置
 - 从官网下载maven解压到`/usr/local`目录
 
-	`tar -xvf maven.tar.gz -C /usr/local`
+	`tar -zxvf maven.tar.gz -C /usr/local`
 
 - Maven安装配置
 
