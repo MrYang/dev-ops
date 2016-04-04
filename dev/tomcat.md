@@ -4,7 +4,7 @@
 
 先安装Java，参考[Java](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/java.md)
 
-从官网下载[tomcat8.0.33](http://mirrors.cnnic.cn/apache/tomcat/tomcat-8/v8.0.33/bin/apache-tomcat-8.0.33.tar.gz), 解压`tar -zxvf -C /usr/local/tomcat8 apache-tomcat-8.0.33.tar.gz`至`/usr/local/tomcat8`
+从官网下载[tomcat8.0.33](http://mirrors.cnnic.cn/apache/tomcat/tomcat-8/v8.0.33/bin/apache-tomcat-8.0.33.tar.gz), 解压`tar -zxvf  apache-tomcat-8.0.33.tar.gz -C /usr/local/`至`/usr/local/`
 
 启动，停止命令。运行`/usr/local/tomcat8/bin/catalina.sh start`,`/usr/local/tomcat8/bin/catalina.sh stop`
 
