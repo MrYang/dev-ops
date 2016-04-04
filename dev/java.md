@@ -1,4 +1,4 @@
-## Java 安装配置
+## Java
 
 ### Java安装
 - 卸载老版本java
@@ -7,7 +7,7 @@
 `rpm -e --nodeps java`
 
 - 从oracle官网下载所需的java版本
-	解压 `tar -xvf java.1.8.tar.gz -C /usr/local` 到`/usr/local`目录
+	解压 `tar -zxvf java.1.8.tar.gz -C /usr/local` 到`/usr/local`目录
 
 - java配置
 `vim /etc/profile`
