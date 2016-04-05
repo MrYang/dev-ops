@@ -88,6 +88,65 @@ collation-server=utf8_general_ci
 
 - 主从复制
 
+配置Master：
+
+```shell
+[mysqld]
+log-bin=mysql-bin   //[必须]启用二进制日志
+server-id=10       //[必须]服务器唯一ID，默认是1，一般取IP最后一段
+```
+
+重启mysql，`service mysqld restart`
+
+对slave授权，`GRANT REPLICATION SLAVE ON *.* to 'root'@'%' identified by 'password';`
+
+查看master状态，`show master status`， 并记录FILE 及 Position 的值，在后面进行从服务器操作的时候需要用到。
+
+配置Slave：
+
+```shell
+[mysqld]
+log-bin=mysql-bin   //[非必须]启用二进制日志
+server-id=11       //[必须]服务器唯一ID，默认是1，一般取IP最后一段
+```
+
+重启mysql，`service mysqld restart`
+
+配置Master，`change master to master_host='192.168.152.10',master_user='root', master_password='123456', master_log_file='mysql-bin.000005', master_log_pos=261;`
+
+开启Slave，`start slave;`
+
+检查同步状态，`show slave status\G`
+
+```shell
+Slave_IO_Running: YES
+Slave_SQL_Running: YES
+```
+当以上两个选项都为YES，表示同步成功。
+
+注意：如果主服务器已经存在应用数据，则在进行主从复制时，需要做以下处理：
+
+主数据库进行锁表操作，不让数据再进行写入动作`FLUSH TABLES WITH READ LOCK;`
+
+查看主数据库状态，`show master status;`
+
+记录下 FILE 及 Position 的值。将主服务器的数据文件（整个/var/lib/mysql目录）复制到从服务器
+
+取消主数据库锁定，`UNLOCK TABLES;`
+
+主从配置参数含义
+```shell
+server-id=1   #值唯一的标识了复制群集中的主从服务器，因此它们必须各不相同。master_id必须为1到65535之间的一个正整数值，slave_id值必须为2到65535之间的一个正整数值。
+log-bin=mysql-bin       #表示打开binlog,打开该选项才可以通过I/O写到Slave的relay-log,也是可以进行replication的前提;
+binlog-do-db=mysql,account		#表示需要记录进制日志的数据库。如果有多个数据库可用逗号分隔，或者使用多个binlog-do-db选项
+binlog-ignore-db=mysql		#表示不需要记录二进制日志的数据库。如果有多个数据库可用逗号分隔，或者使用多个binlog-do-db选项
+replicate-do-db=mysql 		#表示需要同步的数据库，如果有多个数据库可用逗号分隔，或者使用多个replicate-do-db选项
+replicate-ignore-db=mysql		#表示不需要同步的数据库，如果有多个数据库可用逗号分隔，或者使用多个replicate-ignore-db=mysql选项
+auto_increment_offset=1
+auto_increment_increment=2		#auto_increment_increment和auto_increment_offset用于主－主服务器(master-to-master)复制，并可以用来控制AUTO_INCREMENT列的操作
+expire-logs-days=100 #删除过期日志，100天
+```
+
 - 主主复制
 
 ### 优化
