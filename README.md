@@ -4,27 +4,32 @@
 
 - dev
 
-
 记录各种软件安装，配置，及常用命令，包括:
-	
+
+[git](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/git.md)
+
+[gradle](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/gradle.md)
+
 [java](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/java.md)
 	
 [maven](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/maven.md)
 
+[mysql](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/mysql.md)
+
 [nginx](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/nginx.md)
 
-[tomcat](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/tomcat.md)
-
 [redis](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/redis.md)
+
+[svn](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/svn.md)
+
+[tomcat](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/tomcat.md)
     
 [zookeeper](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/zookeeper.md)
 
 - ci
 
-
 持续集成，包括docker,sonar,jenkins及maven私服。
-	
-- ops
 
+- ops
 
 一些运维软件的安装配置操作。
