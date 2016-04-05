@@ -112,7 +112,9 @@ server-id=11       //[必须]服务器唯一ID，默认是1，一般取IP最后�
 
 重启mysql，`service mysqld restart`
 
-配置Master，`change master to master_host='192.168.152.10',master_user='root', master_password='123456', master_log_file='mysql-bin.000005', master_log_pos=261;`
+配置Master，
+
+`change master to master_host='192.168.152.10',master_user='root', master_password='123456', master_log_file='mysql-bin.000005', master_log_pos=261;`
 
 开启Slave，`start slave;`
 
