@@ -116,6 +116,14 @@ publishing {
 
 - 多工程构建
 
+- 可执行jar，`gradle distZip`, `gradle distTar`，分别构建了zip包及tar包，里面已经包含了启动脚本
+
+```groovy
+apply plugin: 'application'
+mainClassName = "org.gradle.sample.Main"
+applicationDefaultJvmArgs = ["-Dgreeting.language=en"]
+```
+
 - sonar配置
 
 ```groovy
