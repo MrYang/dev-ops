@@ -96,7 +96,7 @@ git stash pop #恢复的同时直接删除stash内容
 git stash apply stash@{0} #恢复指定的工作现场，当你保存了不只一份工作现场时。
 ```
 
-- 分支
+- 分支， [分支策略](http://www.ruanyifeng.com/blog/2012/07/git.html)
 
 ```shell
 git branch#列出本地分支
