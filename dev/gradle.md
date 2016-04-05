@@ -113,3 +113,25 @@ publishing {
 	}
 }
 ```
+
+- 多工程构建
+
+- sonar配置
+
+```groovy
+apply plugin: "sonar"
+
+sonar {
+    server {
+        url = "http://192.168.152.10:8085"
+    }
+    database {
+        url = "jdbc:mysql://192.168.152.10:3306/sonar"
+        driverClassName = "com.mysql.jdbc.Driver"
+        username = "root"
+        password = "123456"
+    }
+}
+```
+
+- [gradle示例](https://github.com/pkaq/GradleSide/)
