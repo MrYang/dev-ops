@@ -12,7 +12,6 @@
 sonar.jdbc.username=root
 sonar.jdbc.password=123456
 sonar.jdbc.url=jdbc:mysql://192.168.152.10:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true
-sonar.jdbc.driverClassName=com.mysql.jdbc.Driver
 ```
 
 启动sonarqube `/usr/local/sonarqube/bin/linux-x86-64/sonar.sh start`
