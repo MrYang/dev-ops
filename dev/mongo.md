@@ -53,7 +53,7 @@ exit                         #quit the mongo shell
 ### MapReduce
 
 文档内容如下：
-```javascript
+```json
 {
      _id: ObjectId("50a8240b927d5d8b5891743c"),
      cust_id: "abc123",
