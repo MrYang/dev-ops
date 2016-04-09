@@ -14,6 +14,8 @@
 	
 [maven](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/maven.md)
 
+[mongo](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/mongo.md)
+
 [mysql](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/mysql.md)
 
 [nginx](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/nginx.md)
@@ -29,6 +31,13 @@
 - ci
 
 持续集成，包括docker,sonar,jenkins及maven私服。
+
+[docker](http://git.oschina.net/yxb_1990/DevOps/blob/master/ci/docker.md)
+
+[nexus](http://git.oschina.net/yxb_1990/DevOps/blob/master/ci/nexus.md)
+
+[sonar](http://git.oschina.net/yxb_1990/DevOps/blob/master/ci/sonar.md)
+
 
 - ops
 
