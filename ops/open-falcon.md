@@ -6,9 +6,11 @@
 
 ### 基本使用
 
-即[安装绘图组件](http://book.open-falcon.org/zh/quick_install/graph_components.html)，使用到的模块有`agent`，`transfer`，`graph`，`query`，`dashboard`，过程为`agent`采集数据传输到`transfer`, `transfer`转发给`graph`，`query`从`graph`读取数据, `dashboard`从`query`查询数据展示给用户看。
+即[安装绘图组件](http://book.open-falcon.org/zh/quick_install/graph_components.html)，使用到的模块有`agent`，`transfer`，`graph`，`query`，`dashboard`。
 
-如果一切顺利，打开浏览器访问[agent](http://127.0.0.1:1988) 端口为1988, [dashboard](http://127.0.0.1:8081) 端口为8081。
+过程为`agent`采集数据传输到`transfer`, `transfer`转发给`graph`，`query`从`graph`读取数据, `dashboard`从`query`查询数据展示给用户看。
+
+如果一切顺利，打开浏览器访问[agent](http://127.0.0.1:1988) 数据，端口为1988, [dashboard](http://127.0.0.1:8081) 端口为8081。
 
 - agent 主要配置
 
