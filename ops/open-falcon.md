@@ -253,3 +253,19 @@ UIC_ADDRESS = {
 - judge 配置
 
 ### 自定义监控
+
+- 端口告警
+
+从`fe`，点击链接进入`portal`，输入机器组名称，添加`HostGroup`，点击`hosts`链接，添加host，注意添加的host要是机器的名字，即falcon_portal数据库host表中`hostname`字段的值。
+
+点击`Templates`链接，添加一个模板，可以是跟`HostGroup`名称一样，添加策略，如 metric:`net.port.listen`, tags:`port=80`, note:`nginx80端口未开`,其他保持默认并保存，再在下面的告警设置中配置一个用户组，保存。
+
+回到`HostGroup`，将刚刚创建的`hostgroup`与`template`绑定，即完成了80端口的告警。
+
+其中：
+
+|  metric/tags/note | condition  | max  | P  |
+| ------------ | ------------ | ------------ | ------------ |
+| net.port.listen/port=80  | all(#3)==0  | 3  | 0  |
+
+表示监控80端口，如果三次返回的值都为0，则发送报警，max: 最大报警次数 P：报警级别（<3: 既发短信也发邮件 >=3: 只发邮件）
