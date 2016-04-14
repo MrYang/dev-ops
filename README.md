@@ -34,6 +34,8 @@
 
 [docker](http://git.oschina.net/yxb_1990/DevOps/blob/master/ci/docker.md)
 
+[jenkins](http://git.oschina.net/yxb_1990/DevOps/blob/master/ci/jenkins.md)
+
 [nexus](http://git.oschina.net/yxb_1990/DevOps/blob/master/ci/nexus.md)
 
 [sonar](http://git.oschina.net/yxb_1990/DevOps/blob/master/ci/sonar.md)
@@ -41,4 +43,6 @@
 
 - ops
 
-一些运维软件的安装配置操作。
+一些运维，监控软件的安装配置操作。
+
+[open-falcon](http://git.oschina.net/yxb_1990/DevOps/blob/master/ops/open-falcon.md)
