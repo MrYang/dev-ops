@@ -28,3 +28,35 @@ EOF
 `bin/logstash -e 'input{stdin{}}output{stdout{codec=>rubydebug}}'`
 
 然后终端会等待你的输入。敲入 Hello World，回车。
+
+## Elasticsearch
+
+### 安装
+
+```shell
+cat > /etc/yum.repos.d/elasticsearch.repo <<EOF
+[elasticsearch-2.x]
+name=Elasticsearch repository for 2.x packages
+baseurl=https://packages.elastic.co/elasticsearch/2.x/centos
+gpgcheck=1
+gpgkey=https://packages.elastic.co/GPG-KEY-elasticsearch
+enabled=1
+EOF
+```
+
+`yum install elasticsearch`即可
+
+### 基本使用
+
+以下示例中,database,table替换成自己实际的数据库与表，elasticsearch相对于的概念为index,type
+
+```shell
+curl -X DELETE "localhost:9200/*"
+curl -X GET "localhost:9200/_stats?pretty"
+curl -X GET "localhost:9200/index/type/_search?q=tag:java"
+curl -X GET "localhost:9200/database/table/_search?pretty" -d '{"query":{"match":{"tag":"java"}}}'
+curl -X GET "localhost:9200/database/table/_id?pretty"
+curl -X POST "localhost:9200/database/table?pretty" -d '{title: "java", tag: "java"}'
+curl -X PUT "localhost:9200/database/table/_id?pretty" -d '{title: "groovy", tag: "groovy"}'
+curl -X DELETE "localhost:9200/database/table/_id?pretty"
+```
