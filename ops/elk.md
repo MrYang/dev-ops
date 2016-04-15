@@ -46,6 +46,8 @@ EOF
 
 `yum install elasticsearch`即可
 
+`chkconfig --add elasticsearch`添加开机启动
+
 ### 基本使用
 
 以下示例中,database,table替换成自己实际的数据库与表，elasticsearch相对于的概念为index,type
