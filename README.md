@@ -40,9 +40,16 @@
 
 [sonar](http://git.oschina.net/yxb_1990/DevOps/blob/master/ci/sonar.md)
 
-
 - ops
 
 一些运维，监控软件的安装配置操作。
 
+[chef](http://git.oschina.net/yxb_1990/DevOps/blob/master/ops/chef.md)
+
+[elk](http://git.oschina.net/yxb_1990/DevOps/blob/master/ops/elk.md)
+
+[fabric](http://git.oschina.net/yxb_1990/DevOps/blob/master/ops/fabric.md)
+
 [open-falcon](http://git.oschina.net/yxb_1990/DevOps/blob/master/ops/open-falcon.md)
+
+[saltstack](http://git.oschina.net/yxb_1990/DevOps/blob/master/ops/saltstack.md)
