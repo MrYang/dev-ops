@@ -32,7 +32,7 @@ ansible all -m file -a "dest=~/tests mode=755 owner=ashin group=ashin state=dire
 ansible all -m file -a "dest=~/tests state=absent" # 删除文件夹
 
 # 确保某个程序已经安装，并保持当前版本，如果没安装则进行安装
-ansible groupA -m apt -a "name=python-pip state=present" --sudo -K
+ansible groupA -m apt -a "name=python-pip state=present" --sudo -K  #-K 表示ask-sudo-pass，已废弃，改用become
 # 确保安装最新版本
 ansible groupA -m apt -a "name=git state=latest"
 # 确保没有安装某个程序，安装了则卸载
