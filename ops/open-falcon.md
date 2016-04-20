@@ -252,11 +252,13 @@ UIC_ADDRESS = {
 - alarm 配置
 - judge 配置
 
+总结一下：fe的访问端口是1234，dashboard访问端口是8081，portal访问端口是5050，alram的访问端口是9912，除此之外，agent的访问端口是1988，agent上报数据即transfer监听端口是8433，hbs监听端口是6030，graph监听端口6070，query监听端口9966，redis端口是6379，mysql端口是3306，有防火墙的需要打开这些端口，才能远程访问。
+
 ### 自定义监控
 
 - 端口告警
 
-从`fe`，点击链接进入`portal`，输入机器组名称，添加`HostGroup`，点击`hosts`链接，添加host，注意添加的host要是机器的名字，即falcon_portal数据库host表中`hostname`字段的值。
+从`fe`，点击链接进入`portal`，输入机器组名称，添加`HostGroup`，点击`hosts`链接，添加host，注意添加的host要是机器的名字（如果修改了agent中`hostname`配置，则添加该配置的值），即falcon_portal数据库host表中`hostname`字段的值。
 
 点击`Templates`链接，添加一个模板，可以是跟`HostGroup`名称一样，添加策略，如 metric:`net.port.listen`, tags:`port=80`, note:`nginx80端口未开`,其他保持默认并保存，再在下面的告警设置中配置一个用户组，保存。
 
