@@ -66,6 +66,8 @@ EOF
 
 然后终端会等待你的输入。敲入 Hello World，回车。
 
+watch_file位于`/var/lib/logstash`目录
+
 ### Kibana
 
 ### 安装
