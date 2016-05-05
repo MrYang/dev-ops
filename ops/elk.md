@@ -81,13 +81,13 @@ log4j info 日志配置
 ```shell
 filter {
     grok {
-	match => {
-	  "message" => "%{LOGBACK_DATESTAMP:time} - %{DATA} %{LOGLEVEL:log_level}%{SPACE}%{JAVA_METHOD:clazz}%{DATA} - %{GREEDYDATA:msg}"
-	}
+	  match => {
+	      "message" => "%{LOGBACK_DATESTAMP:time} - %{DATA} %{LOGLEVEL:log_level}%{SPACE}%{JAVA_METHOD:clazz}%{DATA} - %{GREEDYDATA:msg}"
+	  }
     }
 
     date {
-	match => ["time", "yyyy-MM-dd HH:mm:ss.SSS"]
+	  match => ["time", "yyyy-MM-dd HH:mm:ss.SSS"]
     }
 }
 ```
