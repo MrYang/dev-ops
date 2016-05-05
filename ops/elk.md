@@ -106,7 +106,7 @@ filter {
         ]
     }
     date {
-        match => [ "time_local", "dd/MMM/yyyy:hh:mm:ss Z" ]
+        match => [ "time_local", "dd/MMM/yyyy:HH:mm:ss Z" ]
         locale => "en"
     }
 }
