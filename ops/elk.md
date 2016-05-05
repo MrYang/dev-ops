@@ -80,14 +80,15 @@ log4j info 日志配置
 
 ```shell
 filter {
-  grok {
+    grok {
 	match => {
 	  "message" => "%{LOGBACK_DATESTAMP:time} - %{DATA} %{LOGLEVEL:log_level}%{SPACE}%{JAVA_METHOD:clazz}%{DATA} - %{GREEDYDATA:msg}"
 	}
-  }
-  date{
+    }
+
+    date {
 	match => ["time", "yyyy-MM-dd HH:mm:ss.SSS"]
-  }
+    }
 }
 ```
 
@@ -96,6 +97,25 @@ filter {
 ```shell
 LOGBACK_DATESTAMP 20%{YEAR}-%{MONTHNUM}-%{MONTHDAY} %{HOUR}:?%{MINUTE}(?::?%{SECOND})
 JAVA_METHOD %{JAVACLASS:clazz}\(%{NUMBER:line}\)
+```
+
+输入: `2016-05-05 00:45:23.360 - [tomcat-http--47] INFO  com.zz.Controller.trans(66) - 消息内容:消息`
+
+输出: 
+
+```shell
+{
+       "message" => "2016-05-05 00:45:23.360 - [tomcat-http--47] INFO  com.zz.Controller.trans(66) - 消息内容:消息",
+      "@version" => "1",
+    "@timestamp" => "2016-05-05T04:45:23.360Z",
+          "host" => "Master.Hadoop",
+          "time" => "2016-05-05 00:45:23.360",
+     "log_level" => "INFO",
+         "clazz" => "com.zz.Controller.trans",
+          "line" => "66",
+           "msg" => "消息内容:消息"
+}
+
 ```
 
 logstash 的nginx配置示例,注意nginx的log_format需要改成`log_format logstash '$remote_addr|$remote_user|$time_local|$status|$request_time|$body_bytes_sent|$request|$http_referer|$http_user_agent|'`以便适应ruby filter的配置。
