@@ -76,6 +76,28 @@ filter{}
 output{}
 ```
 
+log4j info 日志配置
+
+```shell
+filter {
+  grok {
+	match => {
+	  "message" => "%{LOGBACK_DATESTAMP:time} - %{DATA} %{LOGLEVEL:log_level}%{SPACE}%{JAVA_METHOD:clazz}%{DATA} - %{GREEDYDATA:msg}"
+	}
+  }
+  date{
+	match => ["time", "yyyy-MM-dd HH:mm:ss.SSS"]
+  }
+}
+```
+
+由于`LOGBACK_DATESTAMP`,与`JAVA_METHOD`不属于标准的logstash-patterns，需要自行在`/opt/logstash/vendor/bundle/jruby/1.9/gems/logstash-patterns-core-2.0.5/patterns`添加一个custom文件,添加以下内容
+
+```shell
+LOGBACK_DATESTAMP 20%{YEAR}-%{MONTHNUM}-%{MONTHDAY} %{HOUR}:?%{MINUTE}(?::?%{SECOND})
+JAVA_METHOD %{JAVACLASS:clazz}\(%{NUMBER:line}\)
+```
+
 logstash 的nginx配置示例,注意nginx的log_format需要改成`log_format logstash '$remote_addr|$remote_user|$time_local|$status|$request_time|$body_bytes_sent|$request|$http_referer|$http_user_agent|'`以便适应ruby filter的配置。
 
 ```shell
