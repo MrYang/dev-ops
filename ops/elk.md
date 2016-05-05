@@ -62,7 +62,7 @@ EOF
 
 进入/opt/logstatsh目录，位于终端输入：
 
-`bin/logstash -e `input{stdin{}}filter{date{match=>["message","dd/MMM/yyyy:HH:mm:ss Z"]}}output{stdout{codec=>rubydebug}}'`
+`bin/logstash -e input{stdin{}}filter{date{match=>["message","dd/MMM/yyyy:HH:mm:ss Z"]}}output{stdout{codec=>rubydebug}}'`
 
 然后终端会等待你的输入。敲入 `04/May/2016:23:36:34 +0800`，回车。
 
