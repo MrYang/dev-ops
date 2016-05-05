@@ -25,7 +25,7 @@ EOF
 
 ### 基本使用
 
-以下示例中,database,table替换成自己实际的数据库与表，elasticsearch相对应的概念为index,type
+以下示例中,database,table替换成自己实际的数据库与表，elasticsearch相对应的概念为index,type, _id表示某个文档的id
 
 ```shell
 curl -X DELETE "localhost:9200/*"
@@ -67,6 +67,62 @@ EOF
 然后终端会等待你的输入。敲入 Hello World，回车。
 
 watch_file位于`/var/lib/logstash`目录
+
+logstash的配置文件格式为
+
+```shell
+input{}
+filter{}
+output{}
+```
+
+logstash 的nginx配置示例,注意nginx的log_format需要改成`log_format logstash '$remote_addr|$remote_user|$time_local|$status|$request_time|$body_bytes_sent|$request|$http_referer|$http_user_agent|'`以便适应ruby filter的配置。
+
+```shell
+input {
+    file {
+        path => ["/var/log/nginx/logstash.access.log"]
+        type => "nginx-logstash"
+        sincedb_path => "/var/lib/logstash/.sincedb_nginx"
+        start_position => "beginning"
+    }
+}
+
+filter {
+    ruby {
+        init => "@kname = ['remote_addr','remote_user','time_local','status','request_time','body_bytes_sent','request','http_referer','http_user_agent']"
+        code => "event.append(Hash[@kname.zip(event['message'].split('|'))])"
+    }
+    if [request] {
+        ruby {
+            init => "@kname = ['method','uri','verb']"
+            code => "event.append(Hash[@kname.zip(event['request'].split(' '))])"
+        }
+    }
+    mutate {
+        convert => [
+            "body_bytes_sent" , "integer",
+            "request_time", "float"
+        ]
+    }
+    date {
+        match => [ "time_local", "dd/MMM/yyyy:hh:mm:ss Z" ]
+        locale => "en"
+    }
+}
+
+output {
+    elasticsearch {
+        hosts => ["192.168.152.10:9200"]
+        index => "logstash-%{type}"
+        document_type => "%{type}"
+        workers => 1
+        flush_size => 20000
+        idle_flush_time => 10
+        template_overwrite => true
+    }
+}
+```
 
 ### Kibana
 
