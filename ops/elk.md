@@ -23,6 +23,8 @@ EOF
 
 `service elasticsearch start|stop|restart|status` elasticsearch控制命令
 
+如果遇到没有JAVA_HOME环境变量的问题，编辑`/etc/sysconfig/elasticsearch`, 添加JAVA_HOME
+
 ### 基本使用
 
 以下示例中,database,table替换成自己实际的数据库与表，elasticsearch相对应的概念为index,type, _id表示某个文档的id
