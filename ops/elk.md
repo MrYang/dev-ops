@@ -27,7 +27,7 @@ EOF
 
 ### 基本使用
 
-以下示例中,database,table替换成自己实际的数据库与表，elasticsearch相对应的概念为index,type, _id表示某个文档的id
+以下示例中,database,table替换成自己实际的数据库与表，elasticsearch相对应的概念为index,type, `_id`表示某个文档的id
 
 ```shell
 curl -X DELETE "localhost:9200/*"
@@ -103,7 +103,7 @@ JAVA_METHOD %{JAVACLASS:clazz}\(%{NUMBER:line}\)
 
 输入: `2016-05-05 00:45:23.360 - [tomcat-http--47] INFO  com.zz.Controller.trans(66) - 消息内容:消息`
 
-输出: 
+输出:
 
 ```shell
 {

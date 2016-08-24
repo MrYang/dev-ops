@@ -6,50 +6,50 @@
 
 记录各种软件安装，配置，及常用命令，包括:
 
-[git](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/git.md)
+[git](https://github.com/MrYang/dev-ops/blob/master/dev/git.md)
 
-[gradle](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/gradle.md)
+[gradle](https://github.com/MrYang/dev-ops/blob/master/dev/gradle.md)
 
-[java](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/java.md)
-	
-[maven](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/maven.md)
+[java](https://github.com/MrYang/dev-ops/blob/master/dev/java.md)
 
-[mongo](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/mongo.md)
+[maven](https://github.com/MrYang/dev-ops/blob/master/dev/maven.md)
 
-[mysql](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/mysql.md)
+[mongo](https://github.com/MrYang/dev-ops/blob/master/dev/mongo.md)
 
-[nginx](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/nginx.md)
+[mysql](https://github.com/MrYang/dev-ops/blob/master/dev/mysql.md)
 
-[redis](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/redis.md)
+[nginx](https://github.com/MrYang/dev-ops/blob/master/dev/nginx.md)
 
-[svn](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/svn.md)
+[redis](https://github.com/MrYang/dev-ops/blob/master/dev/redis.md)
 
-[tomcat](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/tomcat.md)
-    
-[zookeeper](http://git.oschina.net/yxb_1990/DevOps/blob/master/dev/zookeeper.md)
+[svn](https://github.com/MrYang/dev-ops/blob/master/dev/svn.md)
+
+[tomcat](https://github.com/MrYang/dev-ops/blob/master/dev/tomcat.md)
+
+[zookeeper](https://github.com/MrYang/dev-ops/blob/master/dev/zookeeper.md)
 
 - ci
 
 持续集成，包括docker,sonar,jenkins及maven私服。
 
-[docker](http://git.oschina.net/yxb_1990/DevOps/blob/master/ci/docker.md)
+[docker](https://github.com/MrYang/dev-ops/blob/master/ci/docker.md)
 
-[jenkins](http://git.oschina.net/yxb_1990/DevOps/blob/master/ci/jenkins.md)
+[jenkins](https://github.com/MrYang/dev-ops/blob/master/ci/jenkins.md)
 
-[nexus](http://git.oschina.net/yxb_1990/DevOps/blob/master/ci/nexus.md)
+[nexus](https://github.com/MrYang/dev-ops/blob/master/ci/nexus.md)
 
-[sonar](http://git.oschina.net/yxb_1990/DevOps/blob/master/ci/sonar.md)
+[sonar](https://github.com/MrYang/dev-ops/blob/master/ci/sonar.md)
 
 - ops
 
 一些运维，监控软件的安装配置操作。
 
-[chef](http://git.oschina.net/yxb_1990/DevOps/blob/master/ops/chef.md)
+[chef](https://github.com/MrYang/dev-ops/blob/master/ops/chef.md)
 
-[elk](http://git.oschina.net/yxb_1990/DevOps/blob/master/ops/elk.md)
+[elk](https://github.com/MrYang/dev-ops/blob/master/ops/elk.md)
 
-[fabric](http://git.oschina.net/yxb_1990/DevOps/blob/master/ops/fabric.md)
+[fabric](https://github.com/MrYang/dev-ops/blob/master/ops/fabric.md)
 
-[open-falcon](http://git.oschina.net/yxb_1990/DevOps/blob/master/ops/open-falcon.md)
+[open-falcon](https://github.com/MrYang/dev-ops/blob/master/ops/open-falcon.md)
 
-[saltstack](http://git.oschina.net/yxb_1990/DevOps/blob/master/ops/saltstack.md)
+[saltstack](https://github.com/MrYang/dev-ops/blob/master/ops/saltstack.md)
