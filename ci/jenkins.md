@@ -6,4 +6,4 @@
 
 ### 配置
 
-添加maven及Subversion插件
+添加maven，gradle，Subversion，git插件
