@@ -70,6 +70,8 @@ EOF
 
 watch_file位于`/var/lib/logstash`目录，重新测试读取文件需要删除since_db文件
 
+配置文件存放位置 `/etc//logstash/conf.d/`
+
 logstash的配置文件格式为
 
 ```shell
@@ -187,6 +189,8 @@ EOF
 
 `chkconfig --add kibana`添加自启动
 
-`service kibanastart|stop|restart|status` kibana控制命令
+配置文件位于`/opt/kibana/config/kibana.yml`
+
+`service kibana start|stop|restart|status` kibana控制命令
 
 安装成功后打开`http://127.0.0.1:5601`

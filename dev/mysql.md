@@ -82,7 +82,7 @@ collation-server=utf8_general_ci
 
 ### 规范
 
-[设计规范](http://git.oschina.net/yxb_1990/program-name-rules/blob/master/Sql.md)
+[设计规范](https://github.com/MrYang/dev-ops/blob/master/blogs/sql设计规范.md)
 
 ### 集群
 

@@ -5,20 +5,28 @@
 - 程序计数器
 - 虚拟机栈
 - 本地方法栈
-- 堆（年轻代1/3(young)+年老代2/3(tenured)），其中年轻代又分为eden+2个survivor区，比例是8:1:1
+- 堆（年轻代(young)+年老代(tenured)），其中年轻代又分为eden+2个survivor区，比例是8:1:1
 - 方法区也叫永久代(PermGen,包括常量池 (内存池)，字段与方法数据及代码)
+
+![](http://images.cnblogs.com/cnblogs_com/jackyrong/a1.jpg)
 
 ### jvm参数
 
-- -Xms 初始堆
-- -Xmx 最大堆
+- -Xms 初始堆 默认物理内存的1/64
+- -Xmx 最大堆 默认物理内存的1/4
 - -Xmn 年轻代 Sun官方推荐配置为整个堆的3/8
 - -Xss 线程大小
 
+- -XX:NewSize JVM堆的‘年轻代’的默认大小
+- -XX:MaxNewSize 设置JVM堆的‘年轻代’的最大大小
+- -XX:OldSize 设置JVM堆的‘老生代’的大小
 - -XX:PermSize 初始永久代
 - -XX:MaxPermSize 永久代最大值
+- -XX:NewRatio ‘年轻代’和‘年老代’的大小比率 默认是2,即 年轻代:年老代比例为2:8
 - -XX:SurvivorRatio 年轻代eden与两个survivor之间的比例，默认是8,即8:1:1
 - -XX:+PrintGCDetails 打印垃圾回收详细信息
+- -XX:+PrintGCTimeStamps 打印GC详细时间
+- -Xloggc:../logs/gc.log gc日志
 
 ### jvm垃圾回收器
 
