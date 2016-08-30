@@ -18,21 +18,25 @@
 - -Xss 线程大小
 - -XX:NewSize JVM堆的‘年轻代’的默认大小
 - -XX:MaxNewSize 设置JVM堆的‘年轻代’的最大大小
-- -XX:OldSize 设置JVM堆的‘老生代’的大小
+- -XX:OldSize 设置JVM堆的‘年老代’的大小
 - -XX:PermSize 初始永久代
 - -XX:MaxPermSize 永久代最大值
-- -XX:NewRatio ‘年轻代’和‘年老代’的大小比率 默认是2,即 年轻代:年老代比例为2:8
+- -XX:NewRatio ‘年老代’和‘年轻代’的大小比率 默认是8,即 年老代:年轻代比例为8:2
 - -XX:SurvivorRatio 年轻代eden与两个survivor之间的比例，默认是8,即8:1:1
 - -XX:+PrintGCDetails 打印垃圾回收详细信息
 - -XX:+PrintGCTimeStamps 打印GC详细时间
 - -Xloggc:../logs/gc.log gc日志
+- -XX:+HeapDumpOnOutOfMemoryError JVM在发生内存溢出时自动生成堆内存快照,快照保存在JVM的启动目录下名为java_pid<pid>.hprof,文件会很大
+- -XX:HeapDumpPath=<path> 堆内存快照生成路径
+- -XX:+PrintTenuringDistribution 指定JVM 在每次新生代GC时，输出幸存区中对象的年龄分布
 
 ### jvm垃圾回收器
 
 - -XX:+UseSerialGC  Seiral串行垃圾回收器，单线程环境而设计,-client模式下，默认该回收器
 - -XX:+UseParallelGC    Parallel并行吞吐优先垃圾回收器，64位操作系统使用-server模式，默认垃圾回收器，stop world
+- -XX:ParallelGCThreads=<value> Parallel并行吞吐优先垃圾回收器线程个数，默认是cpu个数
 - -XX:+UseConcMarkSweepGC 	CMS并发标记扫描垃圾回收器，CMS垃圾回收器是对并行垃圾回收器的一个优化，它以CPU和系统资源为代价，换取GC的延迟
-- -XX:ParallelCMSThreads=  CMS并发标记扫描垃圾回收器线程数，通常是cpu个数
+- -XX:ParallelCMSThreads=<value>  CMS并发标记扫描垃圾回收器线程数，通常是cpu个数
 - -XX:+UseG1GC	G1垃圾回收器
 
 ### GC
