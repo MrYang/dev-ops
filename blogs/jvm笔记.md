@@ -16,7 +16,6 @@
 - -Xmx 最大堆 默认物理内存的1/4
 - -Xmn 年轻代 Sun官方推荐配置为整个堆的3/8
 - -Xss 线程大小
-
 - -XX:NewSize JVM堆的‘年轻代’的默认大小
 - -XX:MaxNewSize 设置JVM堆的‘年轻代’的最大大小
 - -XX:OldSize 设置JVM堆的‘老生代’的大小
