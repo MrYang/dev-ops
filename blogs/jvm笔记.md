@@ -46,3 +46,115 @@ minor GC, 年轻代gc，比较频繁，时间短。Minor GC总是在不能为新
 Major GC, 当堆空间已满或者年老代区占满时，就会触发 Major GC,清理年老区（Tenured space）
 
 full GC, 全gc，清理整个内存堆 – 既包括年轻代也包括年老代. 比较少，时间长
+
+### JVM性能调优监控工具
+
+#### jps 显示指定系统内所有的 HotSpot 虚拟机进程
+
+-q:只输出LVMID，省略主类的名称
+
+-m:输出虚拟机进程启动时传给主类main()函数的参数
+
+-l:输出主类的全类名，如果进程执行的是Jar包，输出Jar路径
+
+-v:输出虚拟机进程启动时JVM参数
+
+命令格式：`jps [option] [pid]`
+
+#### jinfo 显示虚拟机配置信息
+
+jinfo可以使用如下选项：
+
+-flag:显示未被显示指定的参数的系统默认值
+
+-flag [+|-]name或-flag name=value: 修改部分参数
+
+-sysprops:打印虚拟机进程的System.getProperties()
+
+命令格式: `jinfo [option] pid`
+
+#### jmap  生产虚拟机的内存快照 dump 文件
+
+-dump:生成java堆转储快照
+
+-heap:显示java堆详细信息(只在Linux/Solaris下有效)
+
+-F:当虚拟机进程对-dump选项没有响应时，可使用这个选项强制生成dump快照(只在Linux/Solaris下有效)
+
+-finalizerinfo:显示在F-Queue中等待Finalizer线程执行finalize方法的对象(只在Linux/Solaris下有效)
+
+-histo[:live]:显示堆中对象统计信息
+
+-permstat:以ClassLoader为统计口径显示永久代内存状态(只在Linux/Solaris下有效)
+
+命令格式: `jmap [option] pid`，
+
+`jmap -dump:format=b,file=dumpFileName pid` dump生成的文件可以使用jhat，visualVm查看
+
+#### jhat 分析 dump 文件
+
+使用方法为： `jhat -port 9998 -J-Xmx512m [file]`
+
+#### jstack  显示虚拟机的线程快照
+
+用于生成当前JVM的所有线程快照，线程快照是虚拟机每一条线程正在执行的方法,目的是定位线程出现长时间停顿的原因。
+
+-F:当正常输出的请求不被响应时，强制输出线程堆栈
+
+-l:除堆栈外，显示关于锁的附加信息
+
+-m:如果调用到本地方法的话，可以显示C/C++的堆栈
+
+命令格式: `jstack [option] pid`
+
+#### jstat  用于收集 HotSpot 虚拟机各方面的运行数据
+
+jstat 选项
+
+- -class:监视类装载、卸载数量、总空间及类装载所耗费的时间
+- -gc:监听Java堆状况，包括Eden区、两个Survivor区、老年代、永久代等的容量，以用空间、GC时间合计等信息
+- -gccapacity:监视内容与-gc基本相同，但输出主要关注java堆各个区域使用到的最大和最小空间
+- -gcutil:监视内容与-gc基本相同，但输出主要关注已使用空间占总空间的百分比
+- -gccause:与-gcutil功能一样，但是会额外输出导致上一次GC产生的原因
+- -gcnew:监视新生代GC状况
+- -gcnewcapacity:监视内同与-gcnew基本相同，输出主要关注使用到的最大和最小空间
+- -gcold:监视老年代GC情况
+- -gcoldcapacity:监视内同与-gcold基本相同，输出主要关注使用到的最大和最小空间
+- -gcpermcapacity:输出永久代使用到最大和最小空间
+- -compiler:输出JIT编译器编译过的方法、耗时等信息
+- -printcompilation:输出已经被JIT编译的方法
+
+命令格式 `jstat [option pid [interval[s|ms] [count]]]`  后面两个参数表示间隔时间及总输出行数
+
+输出各列含义为：
+
+S0C：S0区容量（S1区相同，略）(Survivor 0区 Capacity)
+
+S0U：S0区已使用 (Survivor 0区 Used)
+
+EC：E区容量 (Eden Capacity)
+
+EU：E区已使用 (Eden Used)
+
+OC：老年代容量 (Old Capacity)
+
+OU：老年代已使用 (Old Used)
+
+PC：Perm容量 (Perm Capacity)
+
+PU：Perm区已使用 (Perm Used)
+
+YGC：Young GC（Minor GC）次数
+
+YGCT：Young GC总耗时
+
+FGC：Full GC次数
+
+FGCT：Full GC总耗时
+
+GCT：GC总耗时
+
+
+#### visualvm
+
+#### jconsole
