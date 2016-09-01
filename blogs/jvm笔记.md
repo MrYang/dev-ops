@@ -8,8 +8,6 @@
 - 堆（年轻代(young)+年老代(tenured)），其中年轻代又分为eden+2个survivor区，比例是8:1:1
 - 方法区也叫永久代(PermGen,包括常量池 (内存池)，字段与方法数据及代码)
 
-![](http://images.cnblogs.com/cnblogs_com/jackyrong/a1.jpg)
-
 ### jvm参数
 
 - -Xms 初始堆 默认物理内存的1/64
