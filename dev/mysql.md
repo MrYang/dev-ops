@@ -80,6 +80,8 @@ character-set-server=utf8
 collation-server=utf8_general_ci
 ```
 
+[配置参考](https://github.com/judasn/Linux-Tutorial/blob/master/MySQL-Settings/MySQL-5.6/1G-Memory-Machine/my-for-comprehensive.cnf)
+
 ### 规范
 
 [设计规范](https://github.com/MrYang/dev-ops/blob/master/blogs/sql设计规范.md)

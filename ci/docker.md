@@ -59,4 +59,26 @@ docker logs -f container #查看容器日志
 
 ### Dockfile
 
+```shell
+
+FROM java:8
+
+MAINTAINER Mr.Yang "paul.wide@gmail.com"
+
+RUN apt-get install -y openssh-server
+RUN mkdir -p /var/run/sshd
+# 设置root ssh远程登录密码为123456
+RUN echo "root:123456" | chpasswd
+
+EXPOSE 22
+
+VOLUME /tmp
+
+ADD springboot-0.1.jar app.jar
+
+ENTRYPOINT ["java","-jar","/app.jar"]
+```
+
+其中，springboot-0.1.jar 跟dockfile文件位于同一目录下，然后执行`docker build -t springboot:0.1 .`
+
 ### 管理

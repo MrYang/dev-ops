@@ -33,16 +33,17 @@ targetCompatibility=1.7
 
 ```groovy
 dependencies {
-    compile "org.springframework:spring-context:4.2.3.RELEASE"
+  compile "org.springframework:spring-context:4.2.3.RELEASE"
 	compile fileTree(dir: '../libs', include: '**/*.jar') // libs目录下所有的jar都依赖进来
-	 compile('javax.servlet.jsp.jstl:jstl-api:1.2') {
+	compile('javax.servlet.jsp.jstl:jstl-api:1.2') {
         exclude(group:'javax.servlet', module: 'servlet-api') // 排除依赖
-    }
-    testCompile "junit:junit:4.+"
+  }
+  testCompile "junit:junit:4.+"
 }
 ```
 
 - 查看依赖 `gradle dependencies`
+
 - 设置变量
 
 ```groovy
@@ -75,7 +76,13 @@ processResources {
 
 ```groovy
 repositories {  
-     maven {url "http://192.168.152.10:8082/nexus/content/groups/public"}
+     maven {
+       credentials {
+           username 'admin'
+           password 'admin123'
+       }
+       url "http://192.168.152.10:8082/nexus/content/groups/public"
+     }
      maven {url "http://192.168.152.10:8082/nexus/content/repositories/thirdparty"}
      mavenCentral()
 }
