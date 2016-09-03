@@ -8,7 +8,17 @@
 
 ```shell
 git config --global user.name "yxb_1990"
-git config --global user.email "email@qq.com"
+git config --global user.email "email@gmail.com"
+```
+
+### github配置
+
+如果全局的邮箱设置的不是你github的邮箱，在github推送的时候不会计算你的贡献值，是因为github没有匹配你的邮箱，这个时候可以在github项目.git 文件夹，编剧`config` 文件, 添加
+
+```ini
+[user]
+      name = yxb_1990
+      email = github@mail.com
 ```
 
 ### .gitignore文件
@@ -49,8 +59,8 @@ git mv file_from file_to # 重命名跟踪文件
 
 git log # 查看提交记录
 
-git commit # 提交更新	
-git commit [file1] [file2] ... # 提交指定文件	
+git commit # 提交更新
+git commit [file1] [file2] ... # 提交指定文件
 git commit -m 'message'#此处注意乱码
 git commit -a # 跳过使用暂存区域，把所有已经跟踪过的文件暂存起来一并提交
 git commit --amend#修改最后一次提交
@@ -172,6 +182,7 @@ git push origin v1.5#推送分支到源上
 git push origin --tags#一次性推送所有分支
 git tag -d v0.1#删除标签
 git push origin :refs/tags/v0.1#删除远程标签
+git checkout -b branch_name tag_name  从分支上迁出标签
 ```
 
 - 帮助
