@@ -1,6 +1,6 @@
 # gitlab
 
-### 安装
+### 安装运行
 
 `docker pull gitlab`
 

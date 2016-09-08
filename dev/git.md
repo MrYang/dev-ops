@@ -122,6 +122,7 @@ git branch -m old new #重命名分支
 git branch -d test#删除test分支
 git branch -D test#强制删除test分支
 git branch --set-upstream dev origin/dev #将本地dev分支与远程dev分支之间建立链接
+git branch -vv 查看本地分支与远程分支的对应关系
 
 git checkout test#切换到test分支
 git checkout -b test#新建+切换到test分支
