@@ -6,7 +6,8 @@
 - 虚拟机栈
 - 本地方法栈
 - 堆（年轻代(young)+年老代(tenured)），其中年轻代又分为eden+2个survivor区，比例是8:1:1
-- 方法区也叫永久代(PermGen,包括常量池 (内存池)，字段与方法数据及代码)
+- 方法区也叫永久代(PermGen,包括常量池 (内存池)，字段与方法数据及代码),JVM1.8已移除，参数PermSize 和 MaxPermSize会被忽略
+- Metaspace JVM1.8新加入，替代PermGen
 
 ### jvm参数
 
@@ -17,8 +18,8 @@
 - -XX:NewSize JVM堆的‘年轻代’的默认大小
 - -XX:MaxNewSize 设置JVM堆的‘年轻代’的最大大小
 - -XX:OldSize 设置JVM堆的‘年老代’的大小
-- -XX:PermSize 初始永久代
-- -XX:MaxPermSize 永久代最大值
+- -XX:PermSize 初始永久代(1.8移除)
+- -XX:MaxPermSize 永久代最大值(1.8移除)
 - -XX:NewRatio ‘年老代’和‘年轻代’的大小比率 默认是8,即 年老代:年轻代比例为8:2
 - -XX:SurvivorRatio 年轻代eden与两个survivor之间的比例，默认是8,即8:1:1
 - -XX:+PrintGCDetails 打印垃圾回收详细信息
@@ -27,6 +28,26 @@
 - -XX:+HeapDumpOnOutOfMemoryError JVM在发生内存溢出时自动生成堆内存快照,快照保存在JVM的启动目录下名为java_pid<pid>.hprof,文件会很大
 - -XX:HeapDumpPath=<path> 堆内存快照生成路径
 - -XX:+PrintTenuringDistribution 指定JVM 在每次新生代GC时，输出幸存区中对象的年龄分布
+
+### gc 日志分析
+
+```xml
+2015-05-26T14:45:37.987-0200:151.126:
+[GC(Allocation Failure)
+151.126: [DefNew:629119K->69888K(629120K), 0.0584157 secs]
+1619346K->1273247K(2027264K),0.0585007 secs]
+[Times: user=0.06 sys=0.00, real=0.06 secs]
+```
+
+其中第一行表示GC事件(GC event)开始的时间点，及JVM的启动时间，单位为秒。
+
+第二行GC表示GC类型，（`GC`表示minor GC，`Full GC`表示Full GC） 及引起垃圾回收的原因
+
+第三行垃圾回收器名称，629119K->69888K，本次垃圾收集之前和之后的年轻代内存使用情况，（629120K）年轻代的总的大小，花费0.0584157秒
+
+第四行，1619346K->1273247K在本次垃圾收集之前和之后整个堆内存的使用情况，(2027264K) – 总的可用的堆内存
+
+第五行，user＝0.06 – 此次垃圾回收, 垃圾收集线程消耗的所有CPU时间,sys=0.00 操作系统调用(OS call) 以及等待系统事件的时间,real=0.06 应用程序暂停的时间(Clock time). 由于串行垃圾收集器(Serial Garbage Collector)只会使用单个线程, 所以 real time 等于 user 以及 system time 的总和
 
 ### jvm垃圾回收器
 
@@ -138,9 +159,13 @@ OC：老年代容量 (Old Capacity)
 
 OU：老年代已使用 (Old Used)
 
-PC：Perm容量 (Perm Capacity)
+PC：Perm容量 (Perm Capacity) 1.8移除
 
-PU：Perm区已使用 (Perm Used)
+PU：Perm区已使用 (Perm Used) 1.8 移除
+
+MC：Metaspace容量 1.8新增
+
+MU: Metaspace区已使用 1.8新增
 
 YGC：Young GC（Minor GC）次数
 
@@ -154,5 +179,9 @@ GCT：GC总耗时
 
 
 #### visualvm
+
+- Visual GC插件
+
+Eden Space(200M, 100M):20M, 表示Eden 总共分配200M空间，当前分配100M，其中20M已被使用
 
 #### jconsole
