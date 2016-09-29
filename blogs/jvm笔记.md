@@ -51,10 +51,14 @@
 
 ### jvm垃圾回收器
 
-- -XX:+UseSerialGC  Seiral串行垃圾回收器，单线程环境而设计,-client模式下，默认该回收器
-- -XX:+UseParallelGC    Parallel并行吞吐优先垃圾回收器，64位操作系统使用-server模式，默认垃圾回收器，stop world
+Serial，ParNew（Serial的多线程版本），Parallel Scavenge（使用复制算法，并行，从吞吐量出发），这三个收集器用于新生代回收
+
+Serial Old，Parallel Old， CMS(Concurrent Mark Sweep)是以获取最短回收暂停时间为目标的收集器，用于老年代收集
+
+- -XX:+UseSerialGC  Seiral串行垃圾回收器（Serial收集器），单线程环境而设计,-client模式下，默认该回收器，stop world
+- -XX:+UseParallelGC    Parallel并行吞吐优先垃圾回收器（ParNew收集器），64位操作系统使用-server模式，默认垃圾回收器，stop world
 - -XX:ParallelGCThreads=<value> Parallel并行吞吐优先垃圾回收器线程个数，默认是cpu个数
-- -XX:+UseConcMarkSweepGC 	CMS并发标记扫描垃圾回收器，CMS垃圾回收器是对并行垃圾回收器的一个优化，它以CPU和系统资源为代价，换取GC的延迟
+- -XX:+UseConcMarkSweepGC 	CMS并发标记扫描垃圾回收器，CMS垃圾回收器是对并行垃圾回收器的一个优化，它以CPU和系统资源为代价，换取GC的延迟，使用该选项后，新生代默认使用ParNew收集器。
 - -XX:ParallelCMSThreads=<value>  CMS并发标记扫描垃圾回收器线程数，通常是cpu个数
 - -XX:+UseG1GC	G1垃圾回收器
 
