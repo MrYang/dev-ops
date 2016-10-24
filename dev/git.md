@@ -116,7 +116,7 @@ git branch -v#查看各个分支最后一个提交对象的信息
 git branch --merge#查看已经合并到当前分支的分支
 git branch --no-merge#查看为合并到当前分支的分支
 git branch test#新建test分支
-git branch branch [branch|commit|tag] # 从指定位置出新建分支
+git branch branchName [branch|commit|tag] # 从指定位置出新建分支
 git branch --track branch remote-branch # 新建一个分支，与指定的远程分支建立追踪关系
 git branch -m old new #重命名分支
 git branch -d test#删除test分支

@@ -170,6 +170,59 @@ output {
 }
 ```
 
+另外一个例子, logback例子
+```xml
+input {
+    file {
+        type => "zz-type"
+        path => ["/opt/tomcat/logs/zz-*.log"]
+	      sincedb_path => "/var/lib/logstash/.sincedb_zz"
+        start_position => "beginning"
+    }
+}
+
+filter {
+    multiline {
+        pattern => '^\['
+        negate => true
+        what => previous
+    }
+
+    grok {
+        pattern => [
+            "\[%{TIMESTAMP_ISO8601:timestamp}\] \[%{DATA:thread}\] %{LOGLEVEL:logLevel} %{DATA:class}\[%{DATA:line}\]\-> \[%{DATA:track}\] %{GREEDYDATA:msg}"
+        ]
+    }
+
+    if "_grokparsefailure" in [tags] {
+        grok {
+            pattern => [
+                "\[%{TIMESTAMP_ISO8601:timestamp}\] \[%{DATA:thread}\] %{LOGLEVEL:logLevel} %{DATA:class}\[%{DATA:line}\]\-> \[%{DATA:track}\] (?<msg>(.|\r|\n)*)"
+            ]
+        }
+    }
+
+    date {
+        match => [
+            "timestamp" , "YYYY-MM-dd HH:mm:ss.SSS"
+        ]
+        target => "@timestamp"
+    }
+}
+
+output {
+    elasticsearch {
+        hosts => ["123.57.151.120:9200"]
+        index => "logstash-%{type}"
+        document_type => "%{type}"
+        workers => 1
+        flush_size => 20000
+        idle_flush_time => 10
+        template_overwrite => true
+    }
+}
+```
+
 ### Kibana
 
 ### 安装
