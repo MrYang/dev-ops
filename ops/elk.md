@@ -60,6 +60,8 @@ EOF
 
 `yum install logstash`
 
+`/opt/logstash/bin/logstash -f /etc/logstash/conf.d/logstash.conf`
+
 ### 基本使用
 
 进入/opt/logstatsh目录，位于终端输入：
@@ -192,6 +194,7 @@ filter {
         pattern => [
             "\[%{TIMESTAMP_ISO8601:timestamp}\] \[%{DATA:thread}\] %{LOGLEVEL:logLevel} %{DATA:class}\[%{DATA:line}\]\-> \[%{DATA:track}\] %{GREEDYDATA:msg}"
         ]
+        remove_field => ["message"]
     }
 
     if "_grokparsefailure" in [tags] {
