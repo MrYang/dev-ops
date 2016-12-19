@@ -32,6 +32,8 @@ yum install –y mysql
 
 - 修改root用户密码
 
+`mysql_safe --skip-grant-tables &` 安装后使用安全模式修改密码
+
 登录mysql, `mysql -u root`
 
 进入数据库后，使用命令：`set password for 'root'@'localhost'= PASSWORD("123456")`
@@ -177,8 +179,8 @@ mysql数据库一般都是按照这个步骤去演化的，成本由低到高
 
 - 备份
 	- 备份命令格式 `mysqldump -h主机名  -P端口 -u用户名 -p密码 –-databases 数据库名 > 文件名.sql`
-	- 备份所有数据库 `mysqldump –all-databases > allbackupfile.sql`
-	- 备份多个数据库 `mysqldump –-databases databasename1 databasename2 databasename3 > multibackupfile.sql`
+	- 备份所有数据库 `mysqldump -all-databases > allbackupfile.sql`
+	- 备份多个数据库 `mysqldump --databases databasename1 databasename2 databasename3 > multibackupfile.sql`
 	- 备份数据库结构 `mysqldump –no-data –databases databasename1 databasename2 databasename3 > structurebackupfile.sql`
 	- 备份数据库 `mysqldump discuz > discuz.sql`
 	- 备份表 `mysqldump discuz user > user.sql`
