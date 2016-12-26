@@ -70,7 +70,7 @@ EOF
 
 然后终端会等待你的输入。敲入 `04/May/2016:23:36:34 +0800`，回车。
 
-watch_file位于`/var/lib/logstash`目录，重新测试读取文件需要删除since_db文件
+watch_file位于`/var/lib/logstash` 或者 `$HOME/.since_db*`目录，重新测试读取文件需要删除since_db文件
 
 配置文件存放位置 `/etc//logstash/conf.d/`
 
