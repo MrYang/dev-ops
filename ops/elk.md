@@ -72,7 +72,7 @@ EOF
 
 watch_file位于`/var/lib/logstash` 或者 `$HOME/.since_db*`目录，重新测试读取文件需要删除since_db文件
 
-配置文件存放位置 `/etc//logstash/conf.d/`
+配置文件存放位置 `/etc/logstash/conf.d/`
 
 logstash的配置文件格式为
 
@@ -250,3 +250,18 @@ EOF
 `service kibana start|stop|restart|status` kibana控制命令
 
 安装成功后打开`http://127.0.0.1:5601`
+
+在Setting菜单中，创建`logstash-*` indices，然后在 `Discover` 菜单中可查看index中的日志。
+
+查询语法：
+
+- 使用双引号做短语查询 "username password"
+- 字段
+  - field:value  字段搜索
+  - _exists_:field 返回结果中需要有field字段
+  - _missing_:field 返回结果不能含有field字段
+- 通配符 `?`匹配单个字符，`*`匹配0到多个字符
+- 正则
+- 范围搜索 `length:[100 TO 200]`
+- 逻辑操作 `AND` `OR` +apache -jakarta test：结果中必须存在apache，不能有jakarta，test可有可无
+- 转义特殊字符

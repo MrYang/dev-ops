@@ -14,4 +14,6 @@
 
 添加maven，gradle，Subversion，git插件
 
-- gradle+git项目配置
+- maven+git项目配置
+
+按照步骤配置好，可以在Post steps中添加shell脚本做具体的操作。
