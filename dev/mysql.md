@@ -184,7 +184,9 @@ mysql数据库一般都是按照这个步骤去演化的，成本由低到高
 	- 备份数据库结构 `mysqldump –no-data –databases databasename1 databasename2 databasename3 > structurebackupfile.sql`
 	- 备份数据库 `mysqldump discuz > discuz.sql`
 	- 备份表 `mysqldump discuz user > user.sql`
+	- 到处csv `SELECT * FROM table INTO OUTFILE '/tmp/table.csv' FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n';`
 
 - 还原
 	- 还原表 `mysql -uroot -p123456 discuz < user.sql`
 	- 导入数据 `source /var/backup/user.sql`
+	- 导入csv `LOAD DATA LOCAL INFILE '/tmp/table.csv' INTO TABLE table FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;`
