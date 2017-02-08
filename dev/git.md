@@ -29,6 +29,7 @@ git config --global user.email "email@gmail.com"
 /TODO # 仅仅忽略项目根目录下的 TODO 文件，不包括 subdir/TODO
 build/ # 忽略 build/ 目录下的所有文件
 /build/* #忽略所有build文件夹，包括子文件夹
+**/build/ #忽略 所有 build/ 目录，包括多层级的目录
 doc/notes.txt # 会忽略 doc/notes.txt 但不包括 doc/server/notes.txt
 ```
 
@@ -124,7 +125,7 @@ git branch -D test#强制删除test分支
 git branch --set-upstream dev origin/dev #将本地dev分支与远程dev分支之间建立链接
 git branch -vv 查看本地分支与远程分支的对应关系
 
-git checkout test#切换到test分支
+git checkout test#切换到test分支｀
 git checkout -b test#新建+切换到test分支
 git checkout -b test dev#基于dev新建test分支，并切换
 
