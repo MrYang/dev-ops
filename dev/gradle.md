@@ -42,6 +42,18 @@ dependencies {
 }
 ```
 
+- 排除编译
+
+```groovy
+sourceSets {
+    main {
+        java{
+            exclude '**/module/**'
+        }
+    }
+}
+```
+
 - 查看依赖 `gradle dependencies`
 
 - 设置变量
@@ -85,6 +97,7 @@ repositories {
      }
      maven {url "http://192.168.152.10:8082/nexus/content/repositories/thirdparty"}
      mavenCentral()
+     mavenLocal()
 }
 ```
 

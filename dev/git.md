@@ -67,6 +67,8 @@ git commit -a # 跳过使用暂存区域，把所有已经跟踪过的文件暂�
 git commit --amend#修改最后一次提交
 git commit -v # 提交时显示所有diff信息
 
+git reset # commit了，但是还没push
+git reset --hard origin/master ＃ 撤回到跟origin/master一样的状态
 git reset HEAD *#取消已经暂存的文件
 git reset --mixed HEAD *#同上
 git reset --soft HEAD *#重置到指定状态，不会修改索引区和工作树
@@ -77,7 +79,7 @@ git revert HEAD #撤销前一次操作
 git revert HEAD~ #撤销前前一次操作
 git revert commit ## 撤销指定操作
 
-git checkout -- file#取消对文件的修改（从暂存区——覆盖worktree file）
+git checkout -- file#取消对文件的修改（从暂存区——覆盖worktree file）,可用于误删除文件时恢复到最新版本
 git checkout branch|tag|commit -- file_name#从仓库取出file覆盖当前分支
 git checkout -- .#从暂存区取出文件覆盖工作区
 
