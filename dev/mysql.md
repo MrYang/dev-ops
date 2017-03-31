@@ -18,7 +18,7 @@ yum localinstall mysql-community-release-el6-5.noarch.rpm
 yum-config-manager --disable mysql55-community
 yum-config-manager --enable mysql56-community
 yum-config-manager --disable mysql57-community
-yum install –y mysql
+yum install –y mysql mysql-server
 ```
 
 - 添加开机启动
