@@ -130,6 +130,21 @@ jinfo可以使用如下选项：
 
 命令格式: `jstack [option] pid`
 
+`grep java.lang.Thread.State stack.dump | awk '{print $2$3$4$5}' | sort | uniq -c` 查看线程及状态
+
+- RUNNABLE
+
+- TIMED_WAITING(onobjectmonitor)  调用 java.lang.Object.wait(long timeout) 进入等待状态。等待获取monitor
+
+- TIMED_WAITING(sleeping)
+
+- TIMED_WAITING (parking) timed_waiting 指等待状态，但这里指定了时间，到达指定的时间后自动退出等待状态；parking指线程处于挂起中
+
+- WAITING(onobjectmonitor)  调用 java.lang.Object.wait() 进入等待状态。等待获取monitor
+
+- WAITING(parking)
+
+
 #### jstat  用于收集 HotSpot 虚拟机各方面的运行数据
 
 jstat 选项
