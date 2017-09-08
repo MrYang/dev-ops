@@ -147,6 +147,7 @@ SourceFile: "ReadClass.java"
 首先前面8行描述了这个class文件大小，修改时间，md5，版本号等基本信息
 
 接下来是常量池：
+
 第一列是常量位置，类型，第二列表示常量组成或者具体值，`//`后面是注释
 
 第一个常量为Methodref类型，具体信息由第12，33个常量组成，然后继续查看第12个常量是Class类型，具体信息是在46常量里面，46常量为字符串"java/lang/Object"，33常量为NameAndType类型，由17，18常量组成，以此类推，最后第一个常量的具体值为`java/lang/Object."<init>":()V`
@@ -154,8 +155,11 @@ SourceFile: "ReadClass.java"
 后面的常量以此类推即可得到所有常量的值
 
 再之后是构造函数
+
 `public com.zz.ReadClass()` 方法名
+
 `descriptor: ()V` 方法描述符，要解释的话又要一大堆，可以参见[这篇文章](http://blog.csdn.net/zhangjg_blog/article/details/21487287)
+
 `flags: ACC_PUBLIC` 访问权限，表示public
 
 `Code` code属性，代码编译完后就是它了
@@ -179,13 +183,18 @@ stack=2, locals=1, args_size=1
 Java字节码指令参见[这里](http://gityuan.com/2015/10/24/jvm-bytecode-grammar/)
 
 `stack=2, locals=1, args_size=1` 表示有两层栈, 一个参数(既this),示例方法默认都自带this参数，静态方法没有this参数
+
 `aload_0` 装载第一个引用类型进栈，既类自身 (this)
+
 `invokespecial #1` 调用方法, `#1` 为第一个常量, 既Object的初始方法（继承了Object类)
+
 `ldc #2` 把第二个常量推送至栈顶
+
 `putfield #3` 给第三个常量设值, 既 `this.b = "2"` b为String类型 
 
 
 `LineNumberTable` 行号表属性：第3行源代码对应第0条指令既`0: aload_0`, 第6行源代码对应第4条指令`aload_0`, 这里没啥意义，因为是默认的构造函数，没有具体的代码
+
 `LocalVariableTable` 局部变量表属性: `this`的生命周期从第0条指令开始，长度有11个长度这么长，到方法结束
 
 ```java
