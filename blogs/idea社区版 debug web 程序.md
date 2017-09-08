@@ -1,7 +1,7 @@
-## IntelliJ IDEA社区版 debug gradle web 程序
+## IntelliJ IDEA社区版 debug web 程序
 
 
-为什么使用IDEA社区版开发web程序，很简单，没钱。
+### gradle
 
 - 使用gradle构建一个符合maven标准的web程序
 
@@ -51,3 +51,10 @@ gretty {
 - run appStartDebug 任务, 不要debug appStartDebug, 没用
 - 使用快捷键Alt+Shift+F9 运行刚刚添加的remote Configurations gretty-debug
 - 关闭的时候使用gretty 的appStop 任务， run appStop
+
+
+### Maven
+
+- 新建一个remote configurations, 设置address=8000, mvnDebug 默认的端口为8000，可以用`vi mvnDebug`查看具体端口
+- 在模块目录命令行下运行命令`mvnDebug jetty:run`, 可以通过-D加各种java 参数
+- 运行remote configuration
