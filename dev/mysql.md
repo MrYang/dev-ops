@@ -34,11 +34,21 @@ yum install –y mysql mysql-server
 
 `mysql_safe --skip-grant-tables &` 安装后使用安全模式修改密码
 
+或者编辑`/etc/my.cnf`, 在[mysqld] 下添加`skip-grant-tables` 重启
+
 登录mysql, `mysql -u root`
 
 进入数据库后，使用命令：`set password for 'root'@'localhost'= PASSWORD("123456")`
 
+`use mysql`
+
 或者`update user set password=password('123456') where user= 'root';`
+
+`5.7.6之后`
+
+或者`update user set authentication_string=PASSWORD('newpass') where User='root';`
+
+`update user set password_expired='N' where user='root';`
 
 - 设置可以远程连接
 

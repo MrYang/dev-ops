@@ -30,9 +30,14 @@ EOF
 以下示例中,database,table替换成自己实际的数据库与表，elasticsearch相对应的概念为index,type, `_id`表示某个文档的id
 
 ```shell
-curl -X DELETE "localhost:9200/*"
+curl -X DELETE "localhost:9200/logstash-*"
 curl -X GET "localhost:9200/_stats?pretty"
-curl -X GET "localhost:9200/index/type/_search?q=tag:java"
+curl -X GET "localhost:9200/_cat"
+curl -X GET "localhost:9200/_cat/indices?v"
+curl -X GET "localhost:9200/index/type/_mapping?pretty"
+curl -X GET "localhost:9200/index/_mapping?pretty"
+curl -X GET "localhost:9200/index/type/_count?q=tag:java"
+curl -X GET "localhost:9200/index,index2/type,type2/_search?pretty&q=tag:java"
 curl -X GET "localhost:9200/index/type/_search?pretty" -d '{"query":{"match":{"tag":"java"}}}'
 curl -X GET "localhost:9200/index/type/_id?pretty"
 curl -X POST "localhost:9200/index/type?pretty" -d '{title: "java", tag: "java"}'
@@ -265,3 +270,11 @@ EOF
 - 范围搜索 `length:[100 TO 200]`
 - 逻辑操作 `AND` `OR` +apache -jakarta test：结果中必须存在apache，不能有jakarta，test可有可无
 - 转义特殊字符
+
+#### Visualize
+
+添加自定义图表
+
+1. 饼图，查看各个url，状态码比例
+2. Metric， 统计PV
+3. Data table 统计前N 个最多访问url

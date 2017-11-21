@@ -80,6 +80,9 @@ appendfsync everysec #每秒执行同步，还有两个参数always、no一般�
 
 [Redis完整命令](http://redis.readthedocs.org/en/2.6/)
 
+批量删除key
+redis-cli keys '*' | xargs redis-cli del
+
 ### 持久化
 
 - 快照RDB
