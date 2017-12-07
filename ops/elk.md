@@ -46,6 +46,52 @@ curl -X DELETE "localhost:9200/index/type/_id?pretty"
 curl -X DELETE "localhost:9200/logstash-2013.03.*"
 ```
 
+### DSL 查询语法
+
+查询可嵌套
+
+```json
+"query": {
+    "bool": {
+        "must": [
+           {
+                "term": {
+                    "a.keyword": "1"
+                }
+            }, 
+            {
+                "terms": {
+                    "b.keyword": ["电影", "音乐", "美食"]
+                }
+            }, 
+            {
+                "bool": {
+                    "should":[
+                        {
+                            "term": {
+                                "c.keyword": "keyword"
+                            }
+                        }
+                    ]
+                }
+            }
+        ], 
+        "must_not": [ ], 
+        "should": [ ]
+    }
+}, 
+"from": 0, 
+"size": 10, 
+"sort": [
+    {
+        "id": {
+            "order": "desc"
+        }
+    } 
+], 
+"aggs": { }
+```
+
 ## Logstash
 
 ### 安装

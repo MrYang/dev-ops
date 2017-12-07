@@ -9,11 +9,14 @@
 - yum安装
 
 添加rpm源
+
 ```shell
 wget dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm
 yum localinstall mysql-community-release-el6-5.noarch.rpm
 ```
+
 安装5.6版本
+
 ```shell
 yum-config-manager --disable mysql55-community
 yum-config-manager --enable mysql56-community
@@ -138,6 +141,7 @@ server-id=11       //[必须]服务器唯一ID，默认是1，一般取IP最后�
 Slave_IO_Running: YES
 Slave_SQL_Running: YES
 ```
+
 当以上两个选项都为YES，表示同步成功。
 
 注意：如果主服务器已经存在应用数据，则在进行主从复制时，需要做以下处理：
@@ -164,6 +168,10 @@ expire-logs-days=100 #删除过期日志，100天
 ```
 
 - 主主复制
+
+### bin-log
+
+`mysqlbinlog mysql-bin.000001 --database db --start-datetime='2017-06-26 00:00:00' --stop-datetime='2017-06-26 23:59:59' > day.sql`
 
 ### 优化
 
@@ -200,4 +208,4 @@ mysql数据库一般都是按照这个步骤去演化的，成本由低到高
 - 还原
 	- 还原表 `mysql -uroot -p123456 discuz < user.sql`
 	- 导入数据 `source /var/backup/user.sql`
-	- 导入csv `LOAD DATA LOCAL INFILE '/tmp/table.csv' INTO TABLE table FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;`
+	- 导入csv `LOAD DATA LOCAL INFILE '/tmp/table.csv' INTO TABLE table character set utf8 FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' LINES TERMINATED BY '\n' IGNORE 1 ROWS;`

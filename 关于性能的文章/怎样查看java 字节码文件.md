@@ -18,7 +18,6 @@ public class ReadClass {
         int r = new ReadClass().add();
         System.out.println(r);
     }
-    
     private int add(){
         return a + Integer.valueOf(b);
     }
@@ -192,7 +191,6 @@ Java字节码指令参见[这里](http://gityuan.com/2015/10/24/jvm-bytecode-gra
 
 `putfield #3` 给第三个常量设值, 既 `this.b = "2"` b为String类型 
 
-
 `LineNumberTable` 行号表属性：第3行源代码对应第0条指令既`0: aload_0`, 第6行源代码对应第4条指令`aload_0`, 这里没啥意义，因为是默认的构造函数，没有具体的代码
 
 `LocalVariableTable` 局部变量表属性: `this`的生命周期从第0条指令开始，长度有11个长度这么长，到方法结束
@@ -227,11 +225,11 @@ public static void main(java.lang.String[]);
 参考java 字节码指令大概可以各个指令含义
 
 1. new ReadClass
-2. 调用init 方法
-3. 调用add(第6个常量) 方法
-4. 把add方法的结果存储到第一个变量中
-5. 获取System.out 静态变量
-6. 装载第一个变量，既add方法存储的变量
-7. 调用println 方法打印
+1. 调用init 方法
+1. 调用add(第6个常量) 方法
+1. 把add方法的结果存储到第一个变量中
+1. 获取System.out 静态变量
+1. 装载第一个变量，既add方法存储的变量
+1. 调用println 方法打印
 
 `LineNumberTable`, `LocalVariableTable` 同上处理

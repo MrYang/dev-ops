@@ -19,6 +19,10 @@ git config --global user.email "email@gmail.com"
 [user]
       name = yxb_1990
       email = github@mail.com
+
+[remote "origin"]
+      fetch = +refs/heads/*:refs/remotes/origin/*
+      url = https://username:password@github.com/repo.git
 ```
 
 ### .gitignore文件
