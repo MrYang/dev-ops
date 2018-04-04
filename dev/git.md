@@ -1,10 +1,10 @@
 # Git
 
-### 安装
+## 安装
 
 `yum install git` 即可
 
-### 配置
+## 配置
 
 ```shell
 git config --global user.name "yxb_1990"
@@ -199,3 +199,38 @@ git checkout -b branch_name tag_name  从分支上迁出标签
 git help * #获取命令的帮助信息
 git status #获取当前的状态，非常有用，因为git会提示接下来的能做的操作
 ```
+
+## git 合并多个commit
+
+`git rebase -i commitid` 其中commitid为最新的一个想保留的 Commit, 回车后，出现类似的界面
+
+`git rebase -i HEAD~3`
+
+```
+pick e7ba81d Commit-1
+pick 5756e15 Commit-2
+pick b1b8189 Commit-3
+
+# Rebase 5d39ff2..b1b8189 onto 5d39ff2 (3 command(s))
+#
+# Commands:
+# p, pick = use commit
+# r, reword = use commit, but edit the commit message
+# e, edit = use commit, but stop for amending
+# s, squash = use commit, but meld into previous commit
+# f, fixup = like "squash", but discard this commit's log message
+# x, exec = run command (the rest of the line) using shell
+#
+# These lines can be re-ordered; they are executed from top to bottom.
+#
+# If you remove a line here THAT COMMIT WILL BE LOST.
+#
+# However, if you remove everything, the rebase will be aborted.
+#
+# Note that empty commits are commented out
+```
+
+squash：使用该 Commit，但会被合并到前一个 Commit 当中
+fixup：就像 squash 那样，但会抛弃这个 Commit 的 Commit message
+
+所以把第二个，第三个commit前的pick 换成 s 或者 f 保存即可

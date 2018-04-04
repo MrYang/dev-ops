@@ -23,6 +23,8 @@ mongo启动命令 `service mongod start|stop|restart|status`
 
 ### 命令
 
+`mongo --host 127.0.0.1  -u "root" -p "123456"  --authenticationDatabase admin`
+
 进入mongo shell后输入help 命令：即可显示所有帮助命令
 
 ```shell
@@ -45,6 +47,7 @@ show log [name]              #prints out the last segment of log in memory, 'glo
 use <db_name>                #set current database
 db.foo.find()                #list objects in collection foo
 db.foo.find( { a : 1 } )     #list objects in foo where a == 1
+db.foo.find({a:1, b:{$gt:0}}).skip(10).limit(10).count()
 it                           #result of the last line evaluated; use to further iterate
 DBQuery.shellBatchSize = x   #set default number of items to display on shell
 exit                         #quit the mongo shell

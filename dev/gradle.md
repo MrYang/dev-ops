@@ -56,6 +56,11 @@ sourceSets {
 
 - 查看依赖 `gradle dependencies`
 
+- 常用命令
+
+`gradle clean`
+`gradle tasks`
+
 - 设置变量
 
 ```groovy

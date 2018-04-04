@@ -46,4 +46,4 @@ acceptCount="100" 当同时连接的人数达到maxThreads时，还可以接收�
 
 在`TOMCAT_HOME/bin` 目录下新建`setenv.sh`, 设置jvm参数
 
-`JAVA_OPTS="-server -Xms1024m -Xmx1024m -Xss256K -XX:PermSize=64m -XX:MaxPermSize=128m"`
+`JAVA_OPTS="-server -Xms1024m -Xmx1024m -Xss256K -XX:+UseConcMarkSweepGC -XX:+UseCMSCompactAtFullCollection -XX:CMSInitiatingOccupancyFraction=70 -XX:+CMSParallelRemarkEnabled -XX:SoftRefLRUPolicyMSPerMB=0 -XX:+CMSClassUnloadingEnabled -XX:SurvivorRatio=8 -XX:-DisableExplicitGC -verbose:gc -Xloggc:./logs/gc.log -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:-OmitStackTraceInFastThrow -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=./logs -XX:ErrorFile=./logs/java_err_%p.log"`

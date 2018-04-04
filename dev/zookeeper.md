@@ -20,6 +20,8 @@ zookeeper命令 `bin/zkServer.sh {start|start-foreground|stop|restart|status|upg
 
 添加开机启动 `echo /usr/local/zookeeper-3.4/bin/zkServer.sh start >> /etc/rc.local`
 
+zkCli.sh -server IP:port
+
 - 伪集群模式
 
 复制zookeeper目录2份，分别为zookeeper0, zookeeper1, zookeeper2, 修改zookeeper0实例`zoo.cfg`
