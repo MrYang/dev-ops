@@ -43,6 +43,8 @@
 appinfo表中有一个字段名字叫做owner_id，这个字段里面存的值是用逗号隔开的多个人的工号，那么我想随便拿一个工号，按照owner_id这个字段去进行查询，就可以使用以下sql语句
 `select * from appinfo where concat (',',owner_id,',') regexp ',123123,'`
 
+`select month(time), count(case when a>2 then a-1 else 1 end )  from log where and a > 0 group by month(time);`
+
 参考文档:
 
 [MySQL数据库设计SQL规范](http://ibisem.com/2015/06/19/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1sql%E8%A7%84%E8%8C%83/)

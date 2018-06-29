@@ -11,8 +11,8 @@
 添加rpm源
 
 ```shell
-wget dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm
-yum localinstall mysql-community-release-el6-5.noarch.rpm
+wget https://dev.mysql.com/get/mysql57-community-release-el6-11.noarch.rpm
+yum localinstall mysql57-community-release-el6-11.noarch.rpm
 ```
 
 安装5.6版本
@@ -35,11 +35,12 @@ yum install –y mysql mysql-server
 
 - 修改root用户密码
 
-`mysql_safe --skip-grant-tables &` 安装后使用安全模式修改密码
 
-或者编辑`/etc/my.cnf`, 在[mysqld] 下添加`skip-grant-tables` 重启
+// `mysql_safe --skip-grant-tables &` 安装后使用安全模式修改密码
 
-登录mysql, `mysql -u root`
+// 或者编辑`/etc/my.cnf`, 在[mysqld] 下添加`skip-grant-tables` 重启
+
+登录mysql, `mysql`
 
 进入数据库后，使用命令：`set password for 'root'@'localhost'= PASSWORD("123456")`
 

@@ -42,6 +42,15 @@ maxSpareThreads="75" 表示如果最多可以空75个线程，例如某时刻有
 
 acceptCount="100" 当同时连接的人数达到maxThreads时，还可以接收排队的连接，超过这个连接的则直接返回拒绝连接。
 
+- Host 配置
+
+```xml
+
+<Host name="localhost"  appBase="webapps" unpackWARs="true" autoDeploy="true">
+    <Context docBase="web" path=""  reloadable="true"  ></Context>
+</Host>
+```
+
 - 设置JVM参数
 
 在`TOMCAT_HOME/bin` 目录下新建`setenv.sh`, 设置jvm参数

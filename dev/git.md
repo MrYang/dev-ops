@@ -134,6 +134,7 @@ git branch -vv 查看本地分支与远程分支的对应关系
 git checkout test#切换到test分支｀
 git checkout -b test#新建+切换到test分支
 git checkout -b test dev#基于dev新建test分支，并切换
+git checkout -b test commitid # 基于commit id新建test分支，并切换
 
 git merge test#将test分支合并到当前分支
 git merge --squash test ## 合并压缩，将test上的commit压缩为一条

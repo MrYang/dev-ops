@@ -39,9 +39,33 @@ curl -X GET "localhost:9200/index/_mapping?pretty"
 curl -X GET "localhost:9200/index/type/_count?q=tag:java"
 curl -X GET "localhost:9200/index,index2/type,type2/_search?pretty&q=tag:java"
 curl -X GET "localhost:9200/index/type/_search?pretty" -d '{"query":{"match":{"tag":"java"}}}'
+curl -X POST 'localhost:9200/index/type/_search?pretty' -H 'Content-Type: application/json' -d'
+{
+  "query": {
+    "term" : { "tag" : "java" } 
+  }
+}
+'
 curl -X GET "localhost:9200/index/type/_id?pretty"
 curl -X POST "localhost:9200/index/type?pretty" -d '{title: "java", tag: "java"}'
 curl -X PUT "localhost:9200/index/type/_id?pretty" -d '{title: "groovy", tag: "groovy"}'
+curl -XPUT 'localhost:9200/index/_mapping/type?pretty' -H 'Content-Type: application/json' -d'
+{
+  "properties": {
+    "name": {
+      "properties": {
+        "last": { 
+          "type": "text"
+        }
+      }
+    },
+    "user_id": {
+      "type": "keyword",
+      "ignore_above": 100 
+    }
+  }
+}
+'
 curl -X DELETE "localhost:9200/index/type/_id?pretty"
 curl -X DELETE "localhost:9200/logstash-2013.03.*"
 ```
