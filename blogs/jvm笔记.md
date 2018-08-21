@@ -70,6 +70,13 @@ Major GC, 当堆空间已满或者年老代区占满时，就会触发 Major GC,
 
 full GC, 全gc，清理整个内存堆 – 既包括年轻代也包括年老代. 比较少，时间长
 
+### GC 触发时机
+
+- young GC：当young gen中的eden区分配满的时候触发
+- full GC：当准备要触发一次young GC时，如果发现统计数据说之前young GC的平均晋升大小比目前old gen剩余的空间大，则不会触发young GC而是转为触发full GC（因为HotSpot VM的GC里，除了CMS的concurrent collection之外，其它能收集old gen的GC都会同时收集整个GC堆，包括young gen，所以不需要事先触发一次单独的young GC）；或者，如果有perm gen的话，要在perm gen分配空间但已经没有足够空间时，也要触发一次full GC；或者System.gc()、heap dump带GC，默认也是触发full GC。
+
+- CMS，主要是定时去检查old gen的使用量，当使用量超过了触发比例就会启动一次CMS GC，对old gen做并发收集
+
 ### JVM性能调优监控工具
 
 #### jps 显示指定系统内所有的 HotSpot 虚拟机进程
