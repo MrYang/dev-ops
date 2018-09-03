@@ -211,3 +211,12 @@ GCT：GC总耗时
 Eden Space(200M, 100M):20M, 表示Eden 总共分配200M空间，当前分配100M，其中20M已被使用
 
 #### jconsole
+
+
+### 线程问题查看
+
+top -Ph pid  shift+t 定位耗时间多的线程
+
+printf "%0x" tid   线程ID转换成16进制小写 
+
+jstack pid |grep 16进制tid
