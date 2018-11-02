@@ -47,8 +47,9 @@ curl -X POST 'localhost:9200/index/type/_search?pretty' -H 'Content-Type: applic
 }
 '
 curl -X GET "localhost:9200/index/type/_id?pretty"
-curl -X POST "localhost:9200/index/type?pretty" -d '{title: "java", tag: "java"}'
-curl -X PUT "localhost:9200/index/type/_id?pretty" -d '{title: "groovy", tag: "groovy"}'
+curl -X POST "localhost:9200/index/type?pretty" -d '{"title": "java", tag: "java"}'
+curl -X PUT "localhost:9200/index/type/_id?pretty" -d '{"title": "groovy", tag: "groovy"}'
+curl -X POST "localhost:9200/index/type/_id/_update" -d '{"doc":{"field":"value"}}'
 curl -XPUT 'localhost:9200/index/_mapping/type?pretty' -H 'Content-Type: application/json' -d'
 {
   "properties": {
