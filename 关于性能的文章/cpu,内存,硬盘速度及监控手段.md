@@ -58,3 +58,4 @@
 - netstat
 - tcpdump
 - tcptrace
+- strace
