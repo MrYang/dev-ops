@@ -44,11 +44,3 @@ appinfo表中有一个字段名字叫做owner_id，这个字段里面存的值�
 `select * from appinfo where concat (',',owner_id,',') regexp ',123123,'`
 
 `select month(time), count(case when a>2 then a-1 else 1 end )  from log where and a > 0 group by month(time);`
-
-参考文档:
-
-[MySQL数据库设计SQL规范](http://ibisem.com/2015/06/19/mysql%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1sql%E8%A7%84%E8%8C%83/)
-
-[互联网MySQL开发规范](https://ittech.ren/posts/mysql_rules.html)
-
-[mysql web数据库的设计归范-1命名规范](http://my.oschina.net/dongzerun/blog/289664?fromerr=bi9fLp16)

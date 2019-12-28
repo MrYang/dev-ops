@@ -95,4 +95,4 @@
 - 配置中心：Spring Cloud Config
 - 限流与熔断：Hystrix
 - 链路追踪：dapper,zipkin
-- 网关
+- 网关 zuul

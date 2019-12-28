@@ -157,7 +157,7 @@ SourceFile: "ReadClass.java"
 
 `public com.zz.ReadClass()` 方法名
 
-`descriptor: ()V` 方法描述符，要解释的话又要一大堆，可以参见[这篇文章](http://blog.csdn.net/zhangjg_blog/article/details/21487287)
+`descriptor: ()V` 方法描述符，可以参见[这篇文章](http://blog.csdn.net/zhangjg_blog/article/details/21487287)
 
 `flags: ACC_PUBLIC` 访问权限，表示public
 

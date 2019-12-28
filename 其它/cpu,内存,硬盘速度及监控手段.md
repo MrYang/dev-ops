@@ -16,14 +16,10 @@
 - 二级缓存读取时间为 7ns
 - 互斥锁的加锁和解锁时间需要 25ns
 - CPU上下文切换(系统调用）需要大约 1500ns (采用的是单核 CPU 线程平均时间)
-
 - 总核数 = 物理CPU个数 X 每颗物理CPU的核数 
 - 总逻辑CPU数 = 物理CPU个数 X 每颗物理CPU的核数 X 超线程数
-
 - 查看物理CPU个数 `cat /proc/cpuinfo| grep "physical id"| sort| uniq| wc -l`
-
 - 查看每个物理CPU中core的个数(即核数) `cat /proc/cpuinfo| grep "cpu cores"| uniq`
-
 - 查看逻辑CPU的个数 `cat /proc/cpuinfo| grep "processor"| wc -l`
 
 中断(interrupt)、上下文切换(context swap)、可运行队列(run queue)负载、CPU 利用率来监测 CPU 的性能
