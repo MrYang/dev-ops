@@ -1,6 +1,6 @@
 # ansible
 
-### 安装配置
+## 安装配置
 
 `pip install ansible` 即可
 
@@ -16,7 +16,7 @@
 
 执行命令`ansible groupA -m ping` 即可查看`192.168.89.11`的ping情况
 
-### 即时命令
+## 即时命令
 
 使用`-a`指定命令， `-f`指定并发数（默认为5）, `-m`是选择使用的模块，不指定`-m`参数时，默认使用`command`模块
 
@@ -45,4 +45,4 @@ ansible groupA -m service -a "name=mysql state=stopped" --sudo -K
 ansible groupA -m script -a "/opt/app/target.sh" #远程服务器上执行本地脚本
 ```
 
-### Playbooks
+## Playbooks

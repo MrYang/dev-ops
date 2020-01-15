@@ -1,10 +1,10 @@
-## Fabric
+# Fabric
 
-### 安装
+## 安装
 
 `pip install fabric`
 
-### 基本使用
+## 基本使用
 
 fab文件编写，其实就是普通的python文件, 使用方法为:`fab -f deploy.py deploy_war`, 其中`deploy_war`为python文件中的方法， 表示执行deploy.py 中的deploy_war方法
 

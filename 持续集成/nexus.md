@@ -1,14 +1,12 @@
 # Nexus
 
-### 安装
+## 安装
 
 官网下载最新Bundle包，解压`tar -xvfg nexus-2.12-bundle.tar.gz -C /usr/local` 至 `/usr/local`文件夹
 
 确保默认端口未被占用，进入bin目录执行`./nexus start`即可
 
-添加开机启动 `echo /usr/local/nexus/bin/nexus start >> /etc/rc.local`
-
-### 配置
+## 配置
 
 - `pom.xml`配置
 

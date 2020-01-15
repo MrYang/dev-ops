@@ -1,6 +1,6 @@
 # SonarQube
 
-### 安装
+## 安装
 
 从官网下载并解压 `unzip sonarqube-5.1.1.zip -d /usr/local` 到`/usr/local`目录
 
@@ -14,13 +14,9 @@ sonar.jdbc.password=123456
 sonar.jdbc.url=jdbc:mysql://192.168.152.10:3306/sonar?useUnicode=true&characterEncoding=utf8&rewriteBatchedStatements=true
 ```
 
-启动sonarqube `/usr/local/sonarqube/bin/linux-x86-64/sonar.sh start`
+启动sonarqube `bin/linux-x86-64/sonar.sh start`，如果遇到ruby没有找到gem错误，可以先执行命令`rvm use system`，再启动
 
-如果遇到ruby没有找到gem什么的错误，可以先执行命令`rvm use system`，再启动
-
-添加开机启动 `echo /usr/local/sonarqube/bin/linux-x86-64/sonar.sh start >> /etc/rc.local`
-
-### 与Maven配合
+## 与Maven配合
 
 编辑maven `setting.xml`文件，在`profiles`节点添加内容
 

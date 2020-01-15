@@ -1,27 +1,10 @@
 # Docker
 
-### 安装
+## 安装
 
 系统要求是64 位操作系统，内核版本至少为 3.10，Docker 目前支持 CentOS 6.5 及以后的版本，推荐使用 CentOS 7 系统。
 
 使用`uname -r`查看内核版本
-
-- yum 安装
-
-CentOS6添加yum源，如果是CentOS7，并且配置了`CentOS-Extras` 源，可跳过此步骤
-
-```shell
-tee /etc/yum.repos.d/docker.repo <<-'EOF'
-[dockerrepo]
-name=Docker Repository
-baseurl=https://yum.dockerproject.org/repo/main/centos/$releasever/
-enabled=1
-gpgcheck=1
-gpgkey=https://yum.dockerproject.org/gpg
-EOF
-```
-
-之后运行`yum update && yum install -y docker-engine`
 
 - 脚本安装
 
@@ -30,7 +13,7 @@ EOF
 - 添加自启动 `chkconfig docker on`
 - 启动关闭命令 `service docker start|stop|restart|status`
 
-### 命令
+## 命令
 
 - 镜像
 
@@ -57,7 +40,7 @@ docker rm $(docker ps -a -q) #删除所有停止运行的容器
 docker logs -f container #查看容器日志
 ```
 
-### Dockfile
+## Dockfile
 
 ```shell
 
@@ -81,4 +64,4 @@ ENTRYPOINT ["java","-jar","/app.jar"]
 
 其中，springboot-0.1.jar 跟dockfile文件位于同一目录下，然后执行`docker build -t springboot:0.1 .`
 
-### 管理
+## 管理
