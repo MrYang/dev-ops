@@ -31,6 +31,7 @@ docker rmi ubuntu:14:04 #删除镜像
 
 ```shell
 docker run --rm -t -i ubuntu /bin/bash #运行完成后自动删除容器
+docker run --rm -it --network host redis:5.0 redis-cli -h 127.0.0.1
 docker run --name mysql -p 3307:3306 -v /home/webapps/mysql/data/:/var/lib/mysql -e MYSQL_ROOT_PASSWORD=123456 -d mysql # 后台运行mysql实例，-p 端口映射，从外部3307映射容器的3306，-v 数据卷映射，-e环境变量设置
 docker ps [-a] #显示运行的容器实例，-a 参数表示所有的，包括已经停止运行的容器
 docker start|stop|restart container  
